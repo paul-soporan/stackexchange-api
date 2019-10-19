@@ -1,0 +1,40 @@
+{
+  "name": "stackexchange-api",
+  "version": "1.0.0",
+  "description": "A wrapper for the StackExchange API",
+  "main": "dist/index.js",
+  "author": {
+    "name": "Paul Soporan",
+    "url": "https://github.com/paul-soporan"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "stackexchange",
+    "stackoverflow",
+    "api",
+    "wrapper"
+  ],
+  "homepage": "https://github.com/paul-soporan/stackexchange-api",
+  "bugs": {
+    "url": "https://github.com/paul-soporan/stackexchange-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paul-soporan/stackexchange-api.git"
+  },
+  "devDependencies": {
+    "@types/request-promise": "^4.1.44",
+    "@typescript-eslint/eslint-plugin": "^2.4.0",
+    "@typescript-eslint/parser": "^2.4.0",
+    "eslint": "^6.5.1",
+    "typescript": "^3.7.0-beta"
+  },
+  "dependencies": {
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  }
+}
