@@ -1,6 +1,8 @@
+import {Question} from './Question';
+
 import {TypeWrapper} from '../result-types/TypeWrapper';
 
-export class Wrapper<T> {
+export class Wrapper {
 
   public backoff?: number;
 
@@ -12,7 +14,7 @@ export class Wrapper<T> {
 
   public hasMore: boolean;
 
-  public items: Array<T>;
+  public items: Array<Question>;
 
   public page?: number;
 
@@ -26,13 +28,19 @@ export class Wrapper<T> {
 
   public type?: string;
 
-  public constructor (wrapper: TypeWrapper) {
+  public constructor (wrapper: TypeWrapper, className: string) {
     this.backoff = wrapper.backoff ?? null;
     this.errorId = wrapper.error_id ?? null;
     this.errorMessage = wrapper.error_message ?? null;
     this.errorName = wrapper.error_name ?? null;
     this.hasMore = wrapper.has_more;
-    this.items = wrapper.items;
+    switch (className) {
+      case 'Question':
+        this.items = wrapper.items.map((item) => new Question(item));
+        break;
+      default:
+        this.items = null;
+    }
     this.page = wrapper.page ?? null;
     this.pageSize = wrapper.page_size ?? null;
     this.quotaMax = wrapper.quota_max;

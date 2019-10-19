@@ -1,10 +1,12 @@
+import {TypeQuestion} from './TypeQuestion';
+
 export interface TypeWrapper {
   backoff?: number;
   error_id?: number;
   error_message?: string;
   error_name?: string;
   has_more: boolean;
-  items: Array<any>;
+  items: Array<TypeQuestion>;
   page?: number;
   page_size?: number;
   quota_max: number;

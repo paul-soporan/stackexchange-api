@@ -1,6 +1,5 @@
 import * as rp from 'request-promise';
 
-import {Question} from '../objects/Question';
 import {Wrapper} from '../objects/Wrapper';
 
 import {SearchOptions} from '../method-options/StackExchange/SearchOptions';
@@ -25,7 +24,7 @@ export class StackExchange {
    */
   public static async search (
     options: SearchOptions
-  ): Promise<Wrapper<Question>> {
+  ): Promise<Wrapper> {
     const searchUrl: URL = new URL('/search', this.baseUrl);
     if (options.fromDate) {
       searchUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
@@ -73,7 +72,7 @@ export class StackExchange {
       searchUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
     }
 
-    return new Wrapper<Question>(
+    return new Wrapper(
       JSON.parse(
         await rp.get(
           searchUrl.href, {
@@ -83,7 +82,7 @@ export class StackExchange {
             gzip: true,
           }
         )
-      )
+      ), 'Question'
     );
   }
 }
