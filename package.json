@@ -26,6 +26,9 @@
     "type": "git",
     "url": "https://github.com/paul-soporan/stackexchange-api.git"
   },
+  "files": [
+    "dist/"
+  ],
   "devDependencies": {
     "@types/request-promise": "^4.1.44",
     "@typescript-eslint/eslint-plugin": "^2.4.0",
