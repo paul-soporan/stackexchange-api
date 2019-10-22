@@ -1,4 +1,5 @@
 import {TypeQuestion} from './TypeQuestion';
+import {TypeSite} from './TypeSite';
 
 export interface TypeWrapper {
   backoff?: number;
@@ -6,7 +7,7 @@ export interface TypeWrapper {
   error_message?: string;
   error_name?: string;
   has_more: boolean;
-  items: Array<TypeQuestion>;
+  items: Array<TypeQuestion | TypeSite>;
   page?: number;
   page_size?: number;
   quota_max: number;

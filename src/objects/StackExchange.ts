@@ -2,11 +2,40 @@ import * as rp from 'request-promise';
 
 import {Wrapper} from '../objects/Wrapper';
 
+import {GetSitesOptions} from '../method-options/StackExchange/GetSitesOptions';
 import {SearchOptions} from '../method-options/StackExchange/SearchOptions';
 
 export class StackExchange {
 
   public static baseUrl: URL = new URL('https://api.stackexchange.com/2.2');
+
+
+  public static async getSites (
+    options: GetSitesOptions
+  ): Promise<Wrapper> {
+    const getSitesUrl = new URL('/sites', this.baseUrl);
+
+    if (options.page) {
+      getSitesUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getSitesUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+
+    return new Wrapper(
+      JSON.parse(
+        await rp.get(
+          getSitesUrl.href, {
+            headers: {
+              'accept-encoding': 'gzip',
+            },
+            gzip: true,
+          }
+        )
+      ), 'Site'
+    );
+  }
+
 
   /*
    * A method for the /search endpoint: https://api.stackexchange.com/docs/search
@@ -26,6 +55,7 @@ export class StackExchange {
     options: SearchOptions
   ): Promise<Wrapper> {
     const searchUrl: URL = new URL('/search', this.baseUrl);
+
     if (options.fromDate) {
       searchUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
     }
