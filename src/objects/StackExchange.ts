@@ -3,6 +3,7 @@ import * as rp from 'request-promise';
 import {Wrapper} from '../objects/Wrapper';
 
 import {GetAnswersOptions} from '../method-options/StackExchange/GetAnswersOptions';
+import {GetAnswersByIdsOptions} from '../method-options/StackExchange/GetAnswersByIdsOptions';
 import {GetPrivilegesOptions} from '../method-options/StackExchange/GetPrivilegesOptions';
 import {GetSitesOptions} from '../method-options/StackExchange/GetSitesOptions';
 import {SearchOptions} from '../method-options/StackExchange/SearchOptions';
@@ -58,6 +59,67 @@ export class StackExchange {
       JSON.parse(
         await rp.get(
           getAnswersUrl.href, {
+            headers: {
+              'accept-encoding': 'gzip',
+            },
+            gzip: true,
+          }
+        )
+      ), 'Answer'
+    );
+  }
+
+
+  /*
+   * A method for the /answers/{ids} endpoint: https://api.stackexchange.com/docs/answers-by-ids
+   * Gets the set of answers identified by ids.
+   * This is meant for batch fetching of questions.
+   * A useful trick to poll for updates is to sort by activity,
+   * with a minimum date of the last time you polled.
+   * `ids` can contain up to 100 semicolon delimited ids.
+   * To find ids programmatically look for answerId on Answer objects.
+   * The sorts accepted by this method operate on the following fields of the Answer object:
+   * activity – last_activity_date
+   * creation – creation_date
+   * votes – score
+   * `activity` is the default sort.
+   * This method returns an array of answers (Answer[]) wrapped in a Wrapper.
+   */
+  public static async getAnswersByIds (
+    options: GetAnswersByIdsOptions
+  ): Promise<Wrapper> {
+    const getAnswersByIdsUrl = new URL(`/answers/${options.ids}`, this.baseUrl);
+
+    if (options.fromDate) {
+      getAnswersByIdsUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+    }
+    if (options.max) {
+      getAnswersByIdsUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+    }
+    if (options.min) {
+      getAnswersByIdsUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+    }
+    if (options.order) {
+      getAnswersByIdsUrl.searchParams.append('order', options.order);
+    }
+    if (options.page) {
+      getAnswersByIdsUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getAnswersByIdsUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    getAnswersByIdsUrl.searchParams.append('site', options.site);
+    if (options.sort) {
+      getAnswersByIdsUrl.searchParams.append('sort', options.sort);
+    }
+    if (options.toDate) {
+      getAnswersByIdsUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+    }
+
+    return new Wrapper(
+      JSON.parse(
+        await rp.get(
+          getAnswersByIdsUrl.href, {
             headers: {
               'accept-encoding': 'gzip',
             },
