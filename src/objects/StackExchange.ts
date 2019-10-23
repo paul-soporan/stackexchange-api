@@ -2,6 +2,7 @@ import * as rp from 'request-promise';
 
 import {Wrapper} from '../objects/Wrapper';
 
+import {GetPrivilegesOptions} from '../method-options/StackExchange/GetPrivilegesOptions';
 import {GetSitesOptions} from '../method-options/StackExchange/GetSitesOptions';
 import {SearchOptions} from '../method-options/StackExchange/SearchOptions';
 import {SimilarSearchOptions} from '../method-options/StackExchange/SimilarSearchOptions';
@@ -12,9 +13,45 @@ export class StackExchange {
 
 
   /*
+   * A method for the /privileges endpoint: https://api.stackexchange.com/docs/privileges
+   * Returns the earnable privileges on a site.
+   * While fairly stable, over time they do change.
+   * New ones are introduced with new features,
+   * and the reputation requirements change as a site matures.
+   * This method returns an array of privileges (Privilege[]) wrapped in a Wrapper.
+   */
+  public static async getPrivileges (
+    options: GetPrivilegesOptions
+  ): Promise<Wrapper> {
+    const getPrivilegesUrl = new URL('/privileges', this.baseUrl);
+
+    if (options.page) {
+      getPrivilegesUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getPrivilegesUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    getPrivilegesUrl.searchParams.append('site', options.site);
+
+    return new Wrapper(
+      JSON.parse(
+        await rp.get(
+          getPrivilegesUrl.href, {
+            headers: {
+              'accept-encoding': 'gzip',
+            },
+            gzip: true,
+          }
+        )
+      ), 'Privilege'
+    );
+  }
+
+
+  /*
    * A method for the /sites endpoint: https://api.stackexchange.com/docs/sites
    * Returns all sites in the network.
-   * This method returns an array of sites (Site[]) wrapperd in a Wrapper.
+   * This method returns an array of sites (Site[]) wrapped in a Wrapper.
    */
   public static async getSites (
     options: GetSitesOptions

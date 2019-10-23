@@ -5,6 +5,7 @@ import {Comment as _Comment} from './objects/Comment';
 import {MigrationInfo as _MigrationInfo} from './objects/MigrationInfo';
 import {Notice as _Notice} from './objects/Notice';
 import {OriginalQuestion as _OriginalQuestion} from './objects/OriginalQuestion';
+import {Privilege as _Privilege} from './objects/Privilege';
 import {Question as _Question} from './objects/Question';
 import {RelatedSite as _RelatedSite} from './objects/RelatedSite';
 import {ShallowUser as _ShallowUser} from './objects/ShallowUser';
@@ -21,6 +22,7 @@ export {
   _MigrationInfo as MigrationInfo,
   _Notice as Notice,
   _OriginalQuestion as OriginalQuestion,
+  _Privilege as Privilege,
   _Question as Question,
   _RelatedSite as RelatedSite,
   _ShallowUser as ShallowUser,

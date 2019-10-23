@@ -1,13 +1,15 @@
+import {Privilege} from './Privilege';
 import {Question} from './Question';
 import {Site} from './Site';
 
+import {TypePrivilege} from '../result-types/TypePrivilege';
 import {TypeQuestion} from '../result-types/TypeQuestion';
 import {TypeSite} from '../result-types/TypeSite';
 
 import {TypeWrapper} from '../result-types/TypeWrapper';
 
 
-type ClassType = 'Question' | 'Site';
+type ClassType = 'Privilege' | 'Question' | 'Site';
 
 export class Wrapper {
 
@@ -21,7 +23,7 @@ export class Wrapper {
 
   public hasMore: boolean;
 
-  public items: Array<Question | Site>;
+  public items: Array<Privilege | Question | Site>;
 
   public page?: number;
 
@@ -42,6 +44,10 @@ export class Wrapper {
     this.errorName = wrapper.error_name ?? null;
     this.hasMore = wrapper.has_more;
     switch (classType) {
+      case 'Privilege':
+        this.items
+          = wrapper.items.map((item) => new Privilege(item as TypePrivilege));
+        break;
       case 'Question':
         this.items
           = wrapper.items.map((item) => new Question(item as TypeQuestion));
