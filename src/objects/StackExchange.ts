@@ -2,6 +2,7 @@ import * as rp from 'request-promise';
 
 import {Wrapper} from '../objects/Wrapper';
 
+import {GetAnswersOptions} from '../method-options/StackExchange/GetAnswersOptions';
 import {GetPrivilegesOptions} from '../method-options/StackExchange/GetPrivilegesOptions';
 import {GetSitesOptions} from '../method-options/StackExchange/GetSitesOptions';
 import {SearchOptions} from '../method-options/StackExchange/SearchOptions';
@@ -10,6 +11,62 @@ import {SimilarSearchOptions} from '../method-options/StackExchange/SimilarSearc
 export class StackExchange {
 
   public static baseUrl: URL = new URL('https://api.stackexchange.com/2.2');
+
+
+  /*
+   * A method for the /answers endpoint: https://api.stackexchange.com/docs/answers
+   * Returns all the undeleted answers in the system.
+   * The sorts accepted by this method operate on the following fields of the Answer object:
+   * activity – last_activity_date
+   * creation – creation_date
+   * votes – score
+   * `activity` is the default sort.
+   * This method returns an array of answers (Answer[]) wrapped in a Wrapper.
+   */
+  public static async getAnswers (
+    options: GetAnswersOptions
+  ): Promise<Wrapper> {
+    const getAnswersUrl = new URL('/answers', this.baseUrl);
+
+    if (options.fromDate) {
+      getAnswersUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+    }
+    if (options.max) {
+      getAnswersUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+    }
+    if (options.min) {
+      getAnswersUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+    }
+    if (options.order) {
+      getAnswersUrl.searchParams.append('order', options.order);
+    }
+    if (options.page) {
+      getAnswersUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getAnswersUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    getAnswersUrl.searchParams.append('site', options.site);
+    if (options.sort) {
+      getAnswersUrl.searchParams.append('sort', options.sort);
+    }
+    if (options.toDate) {
+      getAnswersUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+    }
+
+    return new Wrapper(
+      JSON.parse(
+        await rp.get(
+          getAnswersUrl.href, {
+            headers: {
+              'accept-encoding': 'gzip',
+            },
+            gzip: true,
+          }
+        )
+      ), 'Answer'
+    );
+  }
 
 
   /*
