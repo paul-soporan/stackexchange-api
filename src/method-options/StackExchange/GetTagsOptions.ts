@@ -3,6 +3,7 @@ export interface GetTagsOptions {
   inName?: string;
   max?: number;
   min?: number;
+  moderatorOnly?: boolean;
   order?: 'desc' | 'asc';
   page?: number;
   pageSize?: number;

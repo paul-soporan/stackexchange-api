@@ -386,7 +386,14 @@ export class StackExchange {
    * This method returns an array of tags (Tag[]) wrapped in a Wrapper.
    */
   public static async getTags (options: GetTagsOptions): Promise<Wrapper> {
-    const getTagsUrl = new URL('/tags', this.baseUrl);
+
+    let getTagsUrlPath = '/tags';
+
+    if (options.moderatorOnly) {
+      getTagsUrlPath += '/moderator-only';
+    }
+
+    const getTagsUrl = new URL(getTagsUrlPath, this.baseUrl);
 
     if (options.fromDate) {
       getTagsUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
@@ -428,6 +435,29 @@ export class StackExchange {
         }
       ), 'Tag'
     );
+  }
+
+
+  /*
+   * A method for the /tags/moderator-only endpoint: https://api.stackexchange.com/docs/moderator-only-tags
+   * Returns the tags found on a site that only moderators can use
+   * The inName parameter lets a consumer filter down to tags
+   * that contain a certain substring.
+   * For example, inName: 'own' would return both 'download' and 'owner' amongst others.
+   * The sorts accepted by this method operate on the following fields of the Tag object:
+   * popular – count
+   * activity  – the creationDate of the last Question asked with the tag
+   * name – name
+   * `popular` is the default sort.
+   * This method returns an array of tags (Tag[]) wrapped in a Wrapper.
+   */
+  public static getModeratorOnlyTags (
+    options: Omit<GetTagsOptions, 'moderatorOnly'>
+  ): Promise<Wrapper> {
+    return this.getTags({
+      ...options,
+      moderatorOnly: true,
+    });
   }
 
 
