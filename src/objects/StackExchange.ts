@@ -5,6 +5,7 @@ import {Wrapper} from '../objects/Wrapper';
 import {GetAnswersOptions} from '../method-options/StackExchange/GetAnswersOptions';
 import {GetAnswersByIdsOptions} from '../method-options/StackExchange/GetAnswersByIdsOptions';
 import {GetCommentsOptions} from '../method-options/StackExchange/GetCommentsOptions';
+import {GetCommentsByIdsOptions} from '../method-options/StackExchange/GetCommentsByIdsOptions';
 import {GetPrivilegesOptions} from '../method-options/StackExchange/GetPrivilegesOptions';
 import {GetSitesOptions} from '../method-options/StackExchange/GetSitesOptions';
 import {SearchOptions} from '../method-options/StackExchange/SearchOptions';
@@ -131,6 +132,7 @@ export class StackExchange {
     );
   }
 
+
   /*
    * A method for the /comments endpoint: https://api.stackexchange.com/docs/comments
    * Gets all the comments on the site.
@@ -175,6 +177,63 @@ export class StackExchange {
       JSON.parse(
         await rp.get(
           getCommentsUrl.href, {
+            headers: {
+              'accept-encoding': 'gzip',
+            },
+            gzip: true,
+          }
+        )
+      ), 'Comment'
+    );
+  }
+
+
+  /*
+   * A method for the /comments/{ids} endpoint: https://api.stackexchange.com/docs/comments-by-ids
+   * Gets the comments identified in id.
+   * `ids` can contain up to 100 semicolon delimited ids.
+   * To find ids programmatically look for commentId on Comment objects.
+   * The sorts accepted by this method operate on the following fields of the Comment object:
+   * creation – creationDate
+   * votes – score
+   * `creation` is the default sort.
+   * This method returns an array of comments (Comment[]) wrapped in a Wrapper.
+   */
+  public static async getCommentsByIds (
+    options: GetCommentsByIdsOptions
+  ): Promise<Wrapper> {
+    const getCommentsByIdsUrl = new URL(`/comments/${options.ids}`, this.baseUrl);
+
+    if (options.fromDate) {
+      getCommentsByIdsUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+    }
+    if (options.max) {
+      getCommentsByIdsUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+    }
+    if (options.min) {
+      getCommentsByIdsUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+    }
+    if (options.order) {
+      getCommentsByIdsUrl.searchParams.append('order', options.order);
+    }
+    if (options.page) {
+      getCommentsByIdsUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getCommentsByIdsUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    getCommentsByIdsUrl.searchParams.append('site', options.site);
+    if (options.sort) {
+      getCommentsByIdsUrl.searchParams.append('sort', options.sort);
+    }
+    if (options.toDate) {
+      getCommentsByIdsUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+    }
+
+    return new Wrapper(
+      JSON.parse(
+        await rp.get(
+          getCommentsByIdsUrl.href, {
             headers: {
               'accept-encoding': 'gzip',
             },
