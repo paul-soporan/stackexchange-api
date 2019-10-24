@@ -1,4 +1,5 @@
 import {TypeAnswer} from './TypeAnswer';
+import {TypeComment} from './TypeComment';
 import {TypePrivilege} from './TypePrivilege';
 import {TypeQuestion} from './TypeQuestion';
 import {TypeSite} from './TypeSite';
@@ -9,7 +10,8 @@ export interface TypeWrapper {
   error_message?: string;
   error_name?: string;
   has_more: boolean;
-  items: Array<TypeAnswer | TypePrivilege | TypeQuestion | TypeSite>;
+  items:
+    Array<TypeAnswer | TypeComment | TypePrivilege | TypeQuestion | TypeSite>;
   page?: number;
   page_size?: number;
   quota_max: number;

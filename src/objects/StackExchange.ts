@@ -4,6 +4,7 @@ import {Wrapper} from '../objects/Wrapper';
 
 import {GetAnswersOptions} from '../method-options/StackExchange/GetAnswersOptions';
 import {GetAnswersByIdsOptions} from '../method-options/StackExchange/GetAnswersByIdsOptions';
+import {GetCommentsOptions} from '../method-options/StackExchange/GetCommentsOptions';
 import {GetPrivilegesOptions} from '../method-options/StackExchange/GetPrivilegesOptions';
 import {GetSitesOptions} from '../method-options/StackExchange/GetSitesOptions';
 import {SearchOptions} from '../method-options/StackExchange/SearchOptions';
@@ -18,8 +19,8 @@ export class StackExchange {
    * A method for the /answers endpoint: https://api.stackexchange.com/docs/answers
    * Returns all the undeleted answers in the system.
    * The sorts accepted by this method operate on the following fields of the Answer object:
-   * activity – last_activity_date
-   * creation – creation_date
+   * activity – lastActivityDate
+   * creation – creationDate
    * votes – score
    * `activity` is the default sort.
    * This method returns an array of answers (Answer[]) wrapped in a Wrapper.
@@ -79,8 +80,8 @@ export class StackExchange {
    * `ids` can contain up to 100 semicolon delimited ids.
    * To find ids programmatically look for answerId on Answer objects.
    * The sorts accepted by this method operate on the following fields of the Answer object:
-   * activity – last_activity_date
-   * creation – creation_date
+   * activity – lastActivityDate
+   * creation – creationDate
    * votes – score
    * `activity` is the default sort.
    * This method returns an array of answers (Answer[]) wrapped in a Wrapper.
@@ -127,6 +128,60 @@ export class StackExchange {
           }
         )
       ), 'Answer'
+    );
+  }
+
+  /*
+   * A method for the /comments endpoint: https://api.stackexchange.com/docs/comments
+   * Gets all the comments on the site.
+   * The sorts accepted by this method operate on the following fields of the Comment object:
+   * creation – creationDate
+   * votes – score
+   * `creation` is the default sort.
+   * This method returns an array of comments (Comment[]) wrapped in a Wrapper.
+   */
+  public static async getComments (
+    options: GetCommentsOptions
+  ): Promise<Wrapper> {
+    const getCommentsUrl = new URL('/comments', this.baseUrl);
+
+    if (options.fromDate) {
+      getCommentsUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+    }
+    if (options.max) {
+      getCommentsUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+    }
+    if (options.min) {
+      getCommentsUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+    }
+    if (options.order) {
+      getCommentsUrl.searchParams.append('order', options.order);
+    }
+    if (options.page) {
+      getCommentsUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getCommentsUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    getCommentsUrl.searchParams.append('site', options.site);
+    if (options.sort) {
+      getCommentsUrl.searchParams.append('sort', options.sort);
+    }
+    if (options.toDate) {
+      getCommentsUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+    }
+
+    return new Wrapper(
+      JSON.parse(
+        await rp.get(
+          getCommentsUrl.href, {
+            headers: {
+              'accept-encoding': 'gzip',
+            },
+            gzip: true,
+          }
+        )
+      ), 'Comment'
     );
   }
 
@@ -205,8 +260,8 @@ export class StackExchange {
    * At least one of `tagged` or `inTitle` must be set on this method.
    * `notTagged` is only used if `tagged` is also set, for performance reasons.
    * The sorts accepted by this method operate on the following fields of the Question object:
-   * activity – last_activity_date
-   * creation – creation_date
+   * activity – lastActivityDate
+   * creation – creationDate
    * votes – score
    * relevance – matches the relevance tab on the site itself
    * Does not accept min or max

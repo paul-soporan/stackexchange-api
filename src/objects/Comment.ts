@@ -38,10 +38,18 @@ export class Comment {
     this.creationDate = comment.creation_date;
     this.edited = comment.edited;
     this.link = comment.link ?? null;
-    this.owner = new ShallowUser(comment.owner) ?? null;
+    if (typeof comment.owner === 'undefined') {
+      this.owner = null;
+    } else {
+      this.owner = new ShallowUser(comment.owner);
+    }
     this.postId = comment.post_id;
     this.postType = comment.post_type ?? null;
-    this.replyToUser = new ShallowUser(comment.reply_to_user) ?? null;
+    if (typeof comment.reply_to_user === 'undefined') {
+      this.replyToUser = null;
+    } else {
+      this.replyToUser = new ShallowUser(comment.reply_to_user);
+    }
     this.score = comment.score;
     this.upvoted = comment.upvoted ?? null;
   }
