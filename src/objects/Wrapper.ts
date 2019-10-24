@@ -3,17 +3,19 @@ import {Comment} from './Comment';
 import {Privilege} from './Privilege';
 import {Question} from './Question';
 import {Site} from './Site';
+import {Tag} from './Tag';
 
 import {TypeAnswer} from '../result-types/TypeAnswer';
 import {TypeComment} from '../result-types/TypeComment';
 import {TypePrivilege} from '../result-types/TypePrivilege';
 import {TypeQuestion} from '../result-types/TypeQuestion';
 import {TypeSite} from '../result-types/TypeSite';
+import {TypeTag} from '../result-types/TypeTag';
 
 import {TypeWrapper} from '../result-types/TypeWrapper';
 
 
-type ClassType = 'Answer' | 'Comment' | 'Privilege' | 'Question' | 'Site';
+type ClassType = 'Answer' | 'Comment' | 'Privilege' | 'Question' | 'Site' | 'Tag';
 
 export class Wrapper {
 
@@ -27,7 +29,7 @@ export class Wrapper {
 
   public hasMore: boolean;
 
-  public items: Array<Answer | Comment | Privilege | Question | Site>;
+  public items: Array<Answer | Comment | Privilege | Question | Site | Tag>;
 
   public page?: number;
 
@@ -67,6 +69,10 @@ export class Wrapper {
       case 'Site':
         this.items
           = wrapper.items.map((item) => new Site(item as TypeSite));
+        break;
+      case 'Tag':
+        this.items
+          = wrapper.items.map((item) => new Tag(item as TypeTag));
         break;
       default:
         this.items = null;

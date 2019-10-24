@@ -9,6 +9,7 @@ import {GetCommentsByIdsOptions} from '../method-options/StackExchange/GetCommen
 import {GetCommentsOnAnswersOptions} from '../method-options/StackExchange/GetCommentsOnAnswersOptions';
 import {GetPrivilegesOptions} from '../method-options/StackExchange/GetPrivilegesOptions';
 import {GetSitesOptions} from '../method-options/StackExchange/GetSitesOptions';
+import {GetTagsOptions} from '../method-options/StackExchange/GetTagsOptions';
 import {SearchOptions} from '../method-options/StackExchange/SearchOptions';
 import {SimilarSearchOptions} from '../method-options/StackExchange/SimilarSearchOptions';
 
@@ -367,6 +368,65 @@ export class StackExchange {
           json: true,
         }
       ), 'Site'
+    );
+  }
+
+
+  /*
+   * A method for the /tags endpoint: https://api.stackexchange.com/docs/tags
+   * Returns the tags found on a site.
+   * The inName parameter lets a consumer filter down to tags
+   * that contain a certain substring.
+   * For example, inName: 'own' would return both 'download' and 'owner' amongst others.
+   * The sorts accepted by this method operate on the following fields of the Tag object:
+   * popular – count
+   * activity  – the creationDate of the last Question asked with the tag
+   * name – name
+   * `popular` is the default sort.
+   * This method returns an array of tags (Tag[]) wrapped in a Wrapper.
+   */
+  public static async getTags (options: GetTagsOptions): Promise<Wrapper> {
+    const getTagsUrl = new URL('/tags', this.baseUrl);
+
+    if (options.fromDate) {
+      getTagsUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+    }
+    if (options.inName) {
+      getTagsUrl.searchParams.append('inname', options.inName);
+    }
+    if (options.max) {
+      getTagsUrl.searchParams.append('max', options.max.toString());
+    }
+    if (options.min) {
+      getTagsUrl.searchParams.append('min', options.min.toString());
+    }
+    if (options.order) {
+      getTagsUrl.searchParams.append('order', options.order);
+    }
+    if (options.page) {
+      getTagsUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getTagsUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    getTagsUrl.searchParams.append('site', options.site);
+    if (options.sort) {
+      getTagsUrl.searchParams.append('sort', options.sort);
+    }
+    if (options.toDate) {
+      getTagsUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+    }
+
+    return new Wrapper(
+      await rp.get(
+        getTagsUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
+      ), 'Tag'
     );
   }
 

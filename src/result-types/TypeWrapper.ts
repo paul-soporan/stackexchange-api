@@ -3,6 +3,7 @@ import {TypeComment} from './TypeComment';
 import {TypePrivilege} from './TypePrivilege';
 import {TypeQuestion} from './TypeQuestion';
 import {TypeSite} from './TypeSite';
+import {TypeTag} from './TypeTag';
 
 export interface TypeWrapper {
   backoff?: number;
@@ -11,7 +12,14 @@ export interface TypeWrapper {
   error_name?: string;
   has_more: boolean;
   items:
-    Array<TypeAnswer | TypeComment | TypePrivilege | TypeQuestion | TypeSite>;
+    Array<
+      TypeAnswer
+      | TypeComment
+      | TypePrivilege
+      | TypeQuestion
+      | TypeSite
+      | TypeTag
+    >;
   page?: number;
   page_size?: number;
   quota_max: number;

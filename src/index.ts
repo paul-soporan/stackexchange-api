@@ -12,6 +12,7 @@ import {ShallowUser as _ShallowUser} from './objects/ShallowUser';
 import {Site as _Site} from './objects/Site';
 import {StackExchange as _StackExchange} from './objects/StackExchange';
 import {Styling as _Styling} from './objects/Styling';
+import {Tag as _Tag} from './objects/Tag';
 import {Wrapper as _Wrapper} from './objects/Wrapper';
 
 export {
@@ -29,5 +30,6 @@ export {
   _Site as Site,
   _StackExchange as StackExchange,
   _Styling as Styling,
+  _Tag as Tag,
   _Wrapper as Wrapper,
 };
