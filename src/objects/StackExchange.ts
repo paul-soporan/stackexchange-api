@@ -390,7 +390,18 @@ export class StackExchange {
     let getTagsUrlPath = '/tags';
 
     if (options.moderatorOnly) {
-      getTagsUrlPath += '/moderator-only';
+      if (options.required) {
+        throw Error('The `moderatorOnly` and `required` options are mutually exclusive');
+      } else {
+        getTagsUrlPath += '/moderator-only';
+      }
+    }
+    if (options.required) {
+      if (options.moderatorOnly) {
+        throw Error('The `moderatorOnly` and `required` options are mutually exclusive');
+      } else {
+        getTagsUrlPath += '/required';
+      }
     }
 
     const getTagsUrl = new URL(getTagsUrlPath, this.baseUrl);
@@ -441,22 +452,31 @@ export class StackExchange {
   /*
    * A method for the /tags/moderator-only endpoint: https://api.stackexchange.com/docs/moderator-only-tags
    * Returns the tags found on a site that only moderators can use
-   * The inName parameter lets a consumer filter down to tags
-   * that contain a certain substring.
-   * For example, inName: 'own' would return both 'download' and 'owner' amongst others.
-   * The sorts accepted by this method operate on the following fields of the Tag object:
-   * popular – count
-   * activity  – the creationDate of the last Question asked with the tag
-   * name – name
-   * `popular` is the default sort.
+   * Accepts the same options as the getTags() method, minus `moderatorOnly` and `required`
    * This method returns an array of tags (Tag[]) wrapped in a Wrapper.
    */
   public static getModeratorOnlyTags (
-    options: Omit<GetTagsOptions, 'moderatorOnly'>
+    options: Omit<GetTagsOptions, 'moderatorOnly' | 'required'>
   ): Promise<Wrapper> {
     return this.getTags({
       ...options,
       moderatorOnly: true,
+    });
+  }
+
+
+  /*
+   * A method for the /tags/required endpoint: https://api.stackexchange.com/docs/required-tags
+   * Returns the tags found on a site that fulfill required tag constraints on questions.
+   * Accepts the same options as the getTags() method, minus `moderatorOnly` and `required`
+   * This method returns an array of tags (Tag[]) wrapped in a Wrapper.
+   */
+  public static getRequiredTags (
+    options: Omit<GetTagsOptions, 'moderatorOnly' | 'required'>
+  ): Promise<Wrapper> {
+    return this.getTags({
+      ...options,
+      required: true,
     });
   }
 

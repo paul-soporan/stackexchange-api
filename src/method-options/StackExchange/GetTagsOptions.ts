@@ -7,6 +7,7 @@ export interface GetTagsOptions {
   order?: 'desc' | 'asc';
   page?: number;
   pageSize?: number;
+  required?: boolean;
   site: string;
   sort?: 'popular' | 'activity' | 'name';
   toDate?: Date;
