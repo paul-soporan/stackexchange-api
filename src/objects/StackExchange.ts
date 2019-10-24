@@ -2,6 +2,7 @@ import * as rp from 'request-promise';
 
 import {Wrapper} from '../objects/Wrapper';
 
+import {AdvancedSearchOptions} from '../method-options/StackExchange/AdvancedSearchOptions';
 import {GetAnswersOptions} from '../method-options/StackExchange/GetAnswersOptions';
 import {GetAnswersByIdsOptions} from '../method-options/StackExchange/GetAnswersByIdsOptions';
 import {GetCommentsOptions} from '../method-options/StackExchange/GetCommentsOptions';
@@ -22,6 +23,116 @@ export class StackExchange {
       return list.join(';');
     }
     return list;
+  }
+
+  /*
+   * A method for the /search/advanced endpoint: https://api.stackexchange.com/docs/advanced-search
+   * Searches a site for any questions which fit the given criteria.
+   * Search criteria are expressed using various parameters.
+   * At least one additional parameter must be set if `notTagged` is set, for performance reasons.
+   * The sorts accepted by this method operate on the following fields of the Question object:
+   * activity – lastActivityDate
+   * creation – creationDate
+   * votes – score
+   * relevance – matches the relevance tab on the site itself
+   * Does not accept min or max
+   * `activity` is the default sort.
+   * This method returns an array of questions (Question[]) wrapped in a Wrapper.
+   */
+  public static async advancedSearch (
+    options: AdvancedSearchOptions
+  ): Promise<Wrapper> {
+    const advancedSearchUrl = new URL('/search/advanced', this.baseUrl);
+
+    if (options.accepted) {
+      advancedSearchUrl.searchParams.append('accepted', options.accepted.toString());
+    }
+    if (options.answers) {
+      advancedSearchUrl.searchParams.append('answers', options.answers.toString());
+    }
+    if (options.body) {
+      advancedSearchUrl.searchParams.append('body', options.body);
+    }
+    if (options.closed) {
+      advancedSearchUrl.searchParams.append('closed', options.closed.toString());
+    }
+    if (options.fromDate) {
+      advancedSearchUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+    }
+    if (options.max) {
+      advancedSearchUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+    }
+    if (options.migrated) {
+      advancedSearchUrl.searchParams.append('migrated', options.migrated.toString());
+    }
+    if (options.min) {
+      advancedSearchUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+    }
+    if (options.notice) {
+      advancedSearchUrl.searchParams.append('notice', options.notice.toString());
+    }
+    if (options.notTagged) {
+      if (
+        options.tagged
+        || options.q
+        || options.title
+        || options.body
+        || options.url
+      ) {
+        advancedSearchUrl.searchParams.append('nottagged', this.semiDelimitedListHandler(options.notTagged));
+      } else {
+        throw Error('`notTagged` requires one of `tagged`, `q`, `title`, `body`, or `url` to also be specified');
+      }
+    }
+    if (options.order) {
+      advancedSearchUrl.searchParams.append('order', options.order);
+    }
+    if (options.page) {
+      advancedSearchUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      advancedSearchUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    if (options.q) {
+      advancedSearchUrl.searchParams.append('q', options.q);
+    }
+    advancedSearchUrl.searchParams.append('site', options.site);
+    if (options.sort) {
+      advancedSearchUrl.searchParams.append('sort', options.sort);
+    }
+    if (options.tagged) {
+      advancedSearchUrl.searchParams.append('tagged', this.semiDelimitedListHandler(options.tagged));
+    }
+    if (options.title) {
+      advancedSearchUrl.searchParams.append('title', options.title);
+    }
+    if (options.toDate) {
+      advancedSearchUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+    }
+    if (options.user) {
+      advancedSearchUrl.searchParams.append('user', options.user.toString());
+    }
+    if (options.url) {
+      advancedSearchUrl.searchParams.append('url', options.url);
+    }
+    if (options.views) {
+      advancedSearchUrl.searchParams.append('views', options.views.toString());
+    }
+    if (options.wiki) {
+      advancedSearchUrl.searchParams.append('wiki', options.wiki.toString());
+    }
+
+    return new Wrapper(
+      await rp.get(
+        advancedSearchUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
+      ), 'Question'
+    );
   }
 
 
