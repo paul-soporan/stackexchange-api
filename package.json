@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "A Node.js wrapper for the StackExchange API",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": {
     "name": "Paul Soporan",
     "url": "https://github.com/paul-soporan"
