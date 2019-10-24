@@ -6,6 +6,7 @@ import {GetAnswersOptions} from '../method-options/StackExchange/GetAnswersOptio
 import {GetAnswersByIdsOptions} from '../method-options/StackExchange/GetAnswersByIdsOptions';
 import {GetCommentsOptions} from '../method-options/StackExchange/GetCommentsOptions';
 import {GetCommentsByIdsOptions} from '../method-options/StackExchange/GetCommentsByIdsOptions';
+import {GetCommentsOnAnswersOptions} from '../method-options/StackExchange/GetCommentsOnAnswersOptions';
 import {GetPrivilegesOptions} from '../method-options/StackExchange/GetPrivilegesOptions';
 import {GetSitesOptions} from '../method-options/StackExchange/GetSitesOptions';
 import {SearchOptions} from '../method-options/StackExchange/SearchOptions';
@@ -234,6 +235,63 @@ export class StackExchange {
       JSON.parse(
         await rp.get(
           getCommentsByIdsUrl.href, {
+            headers: {
+              'accept-encoding': 'gzip',
+            },
+            gzip: true,
+          }
+        )
+      ), 'Comment'
+    );
+  }
+
+
+  /*
+   * A method for the /answers/{ids}/comments endpoint: https://api.stackexchange.com/docs/comments-on-answers
+   * Gets the comments on a set of answers.
+   * `ids` can contain up to 100 semicolon delimited ids.
+   * To find ids programmatically look for answerId on Answer objects.
+   * The sorts accepted by this method operate on the following fields of the Comment object:
+   * creation – creationDate
+   * votes – score
+   * `creation` is the default sort.
+   * This method returns an array of comments (Comment[]) wrapped in a Wrapper.
+   */
+  public static async getCommentsOnAnswers (
+    options: GetCommentsOnAnswersOptions
+  ): Promise<Wrapper> {
+    const getCommentsOnAnswersUrl = new URL(`/answers/${options.ids}/comments`, this.baseUrl);
+
+    if (options.fromDate) {
+      getCommentsOnAnswersUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+    }
+    if (options.max) {
+      getCommentsOnAnswersUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+    }
+    if (options.min) {
+      getCommentsOnAnswersUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+    }
+    if (options.order) {
+      getCommentsOnAnswersUrl.searchParams.append('order', options.order);
+    }
+    if (options.page) {
+      getCommentsOnAnswersUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getCommentsOnAnswersUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    getCommentsOnAnswersUrl.searchParams.append('site', options.site);
+    if (options.sort) {
+      getCommentsOnAnswersUrl.searchParams.append('sort', options.sort);
+    }
+    if (options.toDate) {
+      getCommentsOnAnswersUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+    }
+
+    return new Wrapper(
+      JSON.parse(
+        await rp.get(
+          getCommentsOnAnswersUrl.href, {
             headers: {
               'accept-encoding': 'gzip',
             },
