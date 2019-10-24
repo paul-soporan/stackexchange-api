@@ -59,15 +59,14 @@ export class StackExchange {
     }
 
     return new Wrapper(
-      JSON.parse(
-        await rp.get(
-          getAnswersUrl.href, {
-            headers: {
-              'accept-encoding': 'gzip',
-            },
-            gzip: true,
-          }
-        )
+      await rp.get(
+        getAnswersUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
       ), 'Answer'
     );
   }
@@ -120,15 +119,14 @@ export class StackExchange {
     }
 
     return new Wrapper(
-      JSON.parse(
-        await rp.get(
-          getAnswersByIdsUrl.href, {
-            headers: {
-              'accept-encoding': 'gzip',
-            },
-            gzip: true,
-          }
-        )
+      await rp.get(
+        getAnswersByIdsUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
       ), 'Answer'
     );
   }
@@ -175,15 +173,14 @@ export class StackExchange {
     }
 
     return new Wrapper(
-      JSON.parse(
-        await rp.get(
-          getCommentsUrl.href, {
-            headers: {
-              'accept-encoding': 'gzip',
-            },
-            gzip: true,
-          }
-        )
+      await rp.get(
+        getCommentsUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
       ), 'Comment'
     );
   }
@@ -232,15 +229,14 @@ export class StackExchange {
     }
 
     return new Wrapper(
-      JSON.parse(
-        await rp.get(
-          getCommentsByIdsUrl.href, {
-            headers: {
-              'accept-encoding': 'gzip',
-            },
-            gzip: true,
-          }
-        )
+      await rp.get(
+        getCommentsByIdsUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
       ), 'Comment'
     );
   }
@@ -289,15 +285,14 @@ export class StackExchange {
     }
 
     return new Wrapper(
-      JSON.parse(
-        await rp.get(
-          getCommentsOnAnswersUrl.href, {
-            headers: {
-              'accept-encoding': 'gzip',
-            },
-            gzip: true,
-          }
-        )
+      await rp.get(
+        getCommentsOnAnswersUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
       ), 'Comment'
     );
   }
@@ -325,15 +320,14 @@ export class StackExchange {
     getPrivilegesUrl.searchParams.append('site', options.site);
 
     return new Wrapper(
-      JSON.parse(
-        await rp.get(
-          getPrivilegesUrl.href, {
-            headers: {
-              'accept-encoding': 'gzip',
-            },
-            gzip: true,
-          }
-        )
+      await rp.get(
+        getPrivilegesUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
       ), 'Privilege'
     );
   }
@@ -357,15 +351,14 @@ export class StackExchange {
     }
 
     return new Wrapper(
-      JSON.parse(
-        await rp.get(
-          getSitesUrl.href, {
-            headers: {
-              'accept-encoding': 'gzip',
-            },
-            gzip: true,
-          }
-        )
+      await rp.get(
+        getSitesUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
       ), 'Site'
     );
   }
@@ -437,15 +430,14 @@ export class StackExchange {
     }
 
     return new Wrapper(
-      JSON.parse(
-        await rp.get(
-          searchUrl.href, {
-            headers: {
-              'accept-encoding': 'gzip',
-            },
-            gzip: true,
-          }
-        )
+      await rp.get(
+        searchUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
       ), 'Question'
     );
   }
@@ -509,15 +501,14 @@ export class StackExchange {
     }
 
     return new Wrapper(
-      JSON.parse(
-        await rp.get(
-          similarSearchUrl.href, {
-            headers: {
-              'accept-encoding': 'gzip',
-            },
-            gzip: true,
-          }
-        )
+      await rp.get(
+        similarSearchUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
       ), 'Question'
     );
   }
