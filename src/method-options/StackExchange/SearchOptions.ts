@@ -3,12 +3,12 @@ export interface SearchOptions {
   inTitle?: string;
   max?: Date;
   min?: Date;
-  notTagged?: string;
+  notTagged?: string[] | string;
   order?: 'desc' | 'asc';
   page?: number;
   pageSize?: number;
   site: string;
   sort?: 'activity' | 'creation' | 'votes' | 'relevance';
-  tagged?: string;
+  tagged?: string[] | string;
   toDate?: Date;
 }

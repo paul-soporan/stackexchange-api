@@ -14,7 +14,14 @@ import {SimilarSearchOptions} from '../method-options/StackExchange/SimilarSearc
 
 export class StackExchange {
 
-  public static baseUrl: URL = new URL('https://api.stackexchange.com/2.2');
+  private static baseUrl: URL = new URL('https://api.stackexchange.com/2.2');
+
+  private static semiDelimitedListHandler (list: string[] | string): string {
+    if (Array.isArray(list)) {
+      return list.join(';');
+    }
+    return list;
+  }
 
 
   /*
@@ -90,7 +97,7 @@ export class StackExchange {
   public static async getAnswersByIds (
     options: GetAnswersByIdsOptions
   ): Promise<Wrapper> {
-    const getAnswersByIdsUrl = new URL(`/answers/${options.ids}`, this.baseUrl);
+    const getAnswersByIdsUrl = new URL(`/answers/${this.semiDelimitedListHandler(options.ids)}`, this.baseUrl);
 
     if (options.fromDate) {
       getAnswersByIdsUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
@@ -200,7 +207,7 @@ export class StackExchange {
   public static async getCommentsByIds (
     options: GetCommentsByIdsOptions
   ): Promise<Wrapper> {
-    const getCommentsByIdsUrl = new URL(`/comments/${options.ids}`, this.baseUrl);
+    const getCommentsByIdsUrl = new URL(`/comments/${this.semiDelimitedListHandler(options.ids)}`, this.baseUrl);
 
     if (options.fromDate) {
       getCommentsByIdsUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
@@ -256,7 +263,7 @@ export class StackExchange {
   public static async getCommentsOnAnswers (
     options: GetCommentsOnAnswersOptions
   ): Promise<Wrapper> {
-    const getCommentsOnAnswersUrl = new URL(`/answers/${options.ids}/comments`, this.baseUrl);
+    const getCommentsOnAnswersUrl = new URL(`/answers/${this.semiDelimitedListHandler(options.ids)}/comments`, this.baseUrl);
 
     if (options.fromDate) {
       getCommentsOnAnswersUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
@@ -399,7 +406,7 @@ export class StackExchange {
     }
     if (options.notTagged) {
       if (options.tagged) {
-        searchUrl.searchParams.append('nottagged', options.notTagged);
+        searchUrl.searchParams.append('nottagged', this.semiDelimitedListHandler(options.notTagged));
       } else {
         throw Error('`notTagged` may only be set if `tagged` is also set');
       }
@@ -421,7 +428,7 @@ export class StackExchange {
       searchUrl.searchParams.append('sort', options.sort);
     }
     if (options.tagged) {
-      searchUrl.searchParams.append('tagged', options.tagged);
+      searchUrl.searchParams.append('tagged', this.semiDelimitedListHandler(options.tagged));
     } else if (!options.inTitle) {
       throw Error('At least one of `tagged` or `inTitle` must be set');
     }
@@ -474,7 +481,7 @@ export class StackExchange {
       similarSearchUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
     }
     if (options.notTagged) {
-      similarSearchUrl.searchParams.append('nottagged', options.notTagged);
+      similarSearchUrl.searchParams.append('nottagged', this.semiDelimitedListHandler(options.notTagged));
     }
     if (options.order) {
       similarSearchUrl.searchParams.append('order', options.order);
@@ -493,7 +500,7 @@ export class StackExchange {
       similarSearchUrl.searchParams.append('sort', options.sort);
     }
     if (options.tagged) {
-      similarSearchUrl.searchParams.append('tagged', options.tagged);
+      similarSearchUrl.searchParams.append('tagged', this.semiDelimitedListHandler(options.tagged));
     }
     similarSearchUrl.searchParams.append('title', options.title);
     if (options.toDate) {
