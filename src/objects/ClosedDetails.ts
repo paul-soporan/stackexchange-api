@@ -16,13 +16,20 @@ export class ClosedDetails {
   public reason: string;
 
   public constructor (closed_details: TypeClosedDetails) {
-    this.byUsers = closed_details.by_users
-      .map((shallow_user) => new ShallowUser(shallow_user));
+    if (typeof closed_details.by_users === 'undefined') {
+      this.byUsers = null;
+    } else {
+      this.byUsers = closed_details.by_users
+        .map((shallow_user) => new ShallowUser(shallow_user));
+    }
     this.description = closed_details.description;
     this.onHold = closed_details.on_hold;
-    this.originalQuestions = closed_details.original_questions.map(
-      (original_question) => new OriginalQuestion(original_question)
-    ) ?? null;
+    if (typeof closed_details.original_questions === 'undefined') {
+      this.originalQuestions = null;
+    } else {
+      this.originalQuestions = closed_details.original_questions
+        .map((original_question) => new OriginalQuestion(original_question));
+    }
     this.reason = closed_details.reason;
   }
 }

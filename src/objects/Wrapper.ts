@@ -29,7 +29,13 @@ export class Wrapper {
 
   public hasMore: boolean;
 
-  public items: Array<Answer | Comment | Privilege | Question | Site | Tag>;
+  public items:
+    | Answer[]
+    | Comment[]
+    | Privilege[]
+    | Question[]
+    | Site[]
+    | Tag[];
 
   public page?: number;
 
@@ -52,27 +58,33 @@ export class Wrapper {
     switch (classType) {
       case 'Answer':
         this.items
-          = wrapper.items.map((item) => new Answer(item as TypeAnswer));
+          = [...wrapper.items]
+            .map((item: TypeAnswer) => new Answer(item));
         break;
       case 'Comment':
         this.items
-          = wrapper.items.map((item) => new Comment(item as TypeComment));
+          = [...wrapper.items]
+            .map((item: TypeComment) => new Comment(item));
         break;
       case 'Privilege':
         this.items
-          = wrapper.items.map((item) => new Privilege(item as TypePrivilege));
+          = [...wrapper.items]
+            .map((item: TypePrivilege) => new Privilege(item));
         break;
       case 'Question':
         this.items
-          = wrapper.items.map((item) => new Question(item as TypeQuestion));
+          = [...wrapper.items]
+            .map((item: TypeQuestion) => new Question(item));
         break;
       case 'Site':
         this.items
-          = wrapper.items.map((item) => new Site(item as TypeSite));
+          = [...wrapper.items]
+            .map((item: TypeSite) => new Site(item));
         break;
       case 'Tag':
         this.items
-          = wrapper.items.map((item) => new Tag(item as TypeTag));
+          = [...wrapper.items]
+            .map((item: TypeTag) => new Tag(item));
         break;
       default:
         this.items = null;

@@ -12,14 +12,12 @@ export interface TypeWrapper {
   error_name?: string;
   has_more: boolean;
   items:
-    Array<
-      TypeAnswer
-      | TypeComment
-      | TypePrivilege
-      | TypeQuestion
-      | TypeSite
-      | TypeTag
-    >;
+    | TypeAnswer[]
+    | TypeComment[]
+    | TypePrivilege[]
+    | TypeQuestion[]
+    | TypeSite[]
+    | TypeTag[];
   page?: number;
   page_size?: number;
   quota_max: number;
