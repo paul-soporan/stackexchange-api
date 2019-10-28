@@ -16,9 +16,13 @@ import {SimilarSearchOptions} from '../method-options/StackExchange/SimilarSearc
 
 export class StackExchange {
 
-  private static baseUrl: URL = new URL('https://api.stackexchange.com/2.2');
+  protected static baseUrl: URL = new URL('https://api.stackexchange.com/2.2');
 
-  private static semiDelimitedListHandler (list: string[] | string): string {
+  protected static dateHandler (date: Date): string {
+    return Math.round(date.getTime() / 1000).toString();
+  }
+
+  protected static semiDelimitedListHandler (list: string[] | string): string {
     if (Array.isArray(list)) {
       return list.join(';');
     }
@@ -57,16 +61,16 @@ export class StackExchange {
       advancedSearchUrl.searchParams.append('closed', options.closed.toString());
     }
     if (options.fromDate) {
-      advancedSearchUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+      advancedSearchUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
     }
     if (options.max) {
-      advancedSearchUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+      advancedSearchUrl.searchParams.append('max', this.dateHandler(options.max));
     }
     if (options.migrated) {
       advancedSearchUrl.searchParams.append('migrated', options.migrated.toString());
     }
     if (options.min) {
-      advancedSearchUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+      advancedSearchUrl.searchParams.append('min', this.dateHandler(options.min));
     }
     if (options.notice) {
       advancedSearchUrl.searchParams.append('notice', options.notice.toString());
@@ -107,7 +111,7 @@ export class StackExchange {
       advancedSearchUrl.searchParams.append('title', options.title);
     }
     if (options.toDate) {
-      advancedSearchUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+      advancedSearchUrl.searchParams.append('todate', this.dateHandler(options.toDate));
     }
     if (options.user) {
       advancedSearchUrl.searchParams.append('user', options.user.toString());
@@ -152,13 +156,13 @@ export class StackExchange {
     const getAnswersUrl = new URL('/answers', this.baseUrl);
 
     if (options.fromDate) {
-      getAnswersUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+      getAnswersUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
     }
     if (options.max) {
-      getAnswersUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+      getAnswersUrl.searchParams.append('max', this.dateHandler(options.max));
     }
     if (options.min) {
-      getAnswersUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+      getAnswersUrl.searchParams.append('min', this.dateHandler(options.min));
     }
     if (options.order) {
       getAnswersUrl.searchParams.append('order', options.order);
@@ -174,7 +178,7 @@ export class StackExchange {
       getAnswersUrl.searchParams.append('sort', options.sort);
     }
     if (options.toDate) {
-      getAnswersUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+      getAnswersUrl.searchParams.append('todate', this.dateHandler(options.toDate));
     }
 
     return new Wrapper(
@@ -212,13 +216,13 @@ export class StackExchange {
     const getAnswersByIdsUrl = new URL(`/answers/${this.semiDelimitedListHandler(options.ids)}`, this.baseUrl);
 
     if (options.fromDate) {
-      getAnswersByIdsUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+      getAnswersByIdsUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
     }
     if (options.max) {
-      getAnswersByIdsUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+      getAnswersByIdsUrl.searchParams.append('max', this.dateHandler(options.max));
     }
     if (options.min) {
-      getAnswersByIdsUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+      getAnswersByIdsUrl.searchParams.append('min', this.dateHandler(options.min));
     }
     if (options.order) {
       getAnswersByIdsUrl.searchParams.append('order', options.order);
@@ -234,7 +238,7 @@ export class StackExchange {
       getAnswersByIdsUrl.searchParams.append('sort', options.sort);
     }
     if (options.toDate) {
-      getAnswersByIdsUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+      getAnswersByIdsUrl.searchParams.append('todate', this.dateHandler(options.toDate));
     }
 
     return new Wrapper(
@@ -266,13 +270,13 @@ export class StackExchange {
     const getCommentsUrl = new URL('/comments', this.baseUrl);
 
     if (options.fromDate) {
-      getCommentsUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+      getCommentsUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
     }
     if (options.max) {
-      getCommentsUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+      getCommentsUrl.searchParams.append('max', this.dateHandler(options.max));
     }
     if (options.min) {
-      getCommentsUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+      getCommentsUrl.searchParams.append('min', this.dateHandler(options.min));
     }
     if (options.order) {
       getCommentsUrl.searchParams.append('order', options.order);
@@ -288,7 +292,7 @@ export class StackExchange {
       getCommentsUrl.searchParams.append('sort', options.sort);
     }
     if (options.toDate) {
-      getCommentsUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+      getCommentsUrl.searchParams.append('todate', this.dateHandler(options.toDate));
     }
 
     return new Wrapper(
@@ -322,13 +326,13 @@ export class StackExchange {
     const getCommentsByIdsUrl = new URL(`/comments/${this.semiDelimitedListHandler(options.ids)}`, this.baseUrl);
 
     if (options.fromDate) {
-      getCommentsByIdsUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+      getCommentsByIdsUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
     }
     if (options.max) {
-      getCommentsByIdsUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+      getCommentsByIdsUrl.searchParams.append('max', this.dateHandler(options.max));
     }
     if (options.min) {
-      getCommentsByIdsUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+      getCommentsByIdsUrl.searchParams.append('min', this.dateHandler(options.min));
     }
     if (options.order) {
       getCommentsByIdsUrl.searchParams.append('order', options.order);
@@ -344,7 +348,7 @@ export class StackExchange {
       getCommentsByIdsUrl.searchParams.append('sort', options.sort);
     }
     if (options.toDate) {
-      getCommentsByIdsUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+      getCommentsByIdsUrl.searchParams.append('todate', this.dateHandler(options.toDate));
     }
 
     return new Wrapper(
@@ -378,13 +382,13 @@ export class StackExchange {
     const getCommentsOnAnswersUrl = new URL(`/answers/${this.semiDelimitedListHandler(options.ids)}/comments`, this.baseUrl);
 
     if (options.fromDate) {
-      getCommentsOnAnswersUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+      getCommentsOnAnswersUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
     }
     if (options.max) {
-      getCommentsOnAnswersUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+      getCommentsOnAnswersUrl.searchParams.append('max', this.dateHandler(options.max));
     }
     if (options.min) {
-      getCommentsOnAnswersUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+      getCommentsOnAnswersUrl.searchParams.append('min', this.dateHandler(options.min));
     }
     if (options.order) {
       getCommentsOnAnswersUrl.searchParams.append('order', options.order);
@@ -400,7 +404,7 @@ export class StackExchange {
       getCommentsOnAnswersUrl.searchParams.append('sort', options.sort);
     }
     if (options.toDate) {
-      getCommentsOnAnswersUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+      getCommentsOnAnswersUrl.searchParams.append('todate', this.dateHandler(options.toDate));
     }
 
     return new Wrapper(
@@ -518,7 +522,7 @@ export class StackExchange {
     const getTagsUrl = new URL(getTagsUrlPath, this.baseUrl);
 
     if (options.fromDate) {
-      getTagsUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+      getTagsUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
     }
     if (options.inName) {
       getTagsUrl.searchParams.append('inname', options.inName);
@@ -543,7 +547,7 @@ export class StackExchange {
       getTagsUrl.searchParams.append('sort', options.sort);
     }
     if (options.toDate) {
-      getTagsUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+      getTagsUrl.searchParams.append('todate', this.dateHandler(options.toDate));
     }
 
     return new Wrapper(
@@ -612,7 +616,7 @@ export class StackExchange {
     const searchUrl: URL = new URL('/search', this.baseUrl);
 
     if (options.fromDate) {
-      searchUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+      searchUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
     }
     if (options.inTitle) {
       searchUrl.searchParams.append('intitle', options.inTitle);
@@ -620,10 +624,10 @@ export class StackExchange {
       throw Error('At least one of `tagged` or `inTitle` must be set');
     }
     if (options.max) {
-      searchUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+      searchUrl.searchParams.append('max', this.dateHandler(options.max));
     }
     if (options.min) {
-      searchUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+      searchUrl.searchParams.append('min', this.dateHandler(options.min));
     }
     if (options.notTagged) {
       if (options.tagged) {
@@ -654,7 +658,7 @@ export class StackExchange {
       throw Error('At least one of `tagged` or `inTitle` must be set');
     }
     if (options.toDate) {
-      searchUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+      searchUrl.searchParams.append('todate', this.dateHandler(options.toDate));
     }
 
     return new Wrapper(
@@ -693,13 +697,13 @@ export class StackExchange {
     const similarSearchUrl: URL = new URL('/similar', this.baseUrl);
 
     if (options.fromDate) {
-      similarSearchUrl.searchParams.append('fromdate', Math.round(options.fromDate.getTime() / 1000).toString());
+      similarSearchUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
     }
     if (options.max) {
-      similarSearchUrl.searchParams.append('max', Math.round(options.max.getTime() / 1000).toString());
+      similarSearchUrl.searchParams.append('max', this.dateHandler(options.max));
     }
     if (options.min) {
-      similarSearchUrl.searchParams.append('min', Math.round(options.min.getTime() / 1000).toString());
+      similarSearchUrl.searchParams.append('min', this.dateHandler(options.min));
     }
     if (options.notTagged) {
       similarSearchUrl.searchParams.append('nottagged', this.semiDelimitedListHandler(options.notTagged));
@@ -725,7 +729,7 @@ export class StackExchange {
     }
     similarSearchUrl.searchParams.append('title', options.title);
     if (options.toDate) {
-      similarSearchUrl.searchParams.append('todate', Math.round(options.toDate.getTime() / 1000).toString());
+      similarSearchUrl.searchParams.append('todate', this.dateHandler(options.toDate));
     }
 
     return new Wrapper(
