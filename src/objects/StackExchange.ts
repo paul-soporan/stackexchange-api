@@ -14,6 +14,7 @@ import {AdvancedSearchOptions} from '../method-options/StackExchange/AdvancedSea
 import {GetAnswersOptions} from '../method-options/StackExchange/GetAnswersOptions';
 import {GetAnswersByIdsOptions} from '../method-options/StackExchange/GetAnswersByIdsOptions';
 import {GetBadgesOptions} from '../method-options/StackExchange/GetBadgesOptions';
+import {GetBadgesByIdsOptions} from '../method-options/StackExchange/GetBadgesByIdsOptions';
 import {GetCommentsOptions} from '../method-options/StackExchange/GetCommentsOptions';
 import {GetCommentsByIdsOptions} from '../method-options/StackExchange/GetCommentsByIdsOptions';
 import {GetCommentsOnAnswersOptions} from '../method-options/StackExchange/GetCommentsOnAnswersOptions';
@@ -306,6 +307,58 @@ export class StackExchange {
     return new Wrapper(
       await rp.get(
         getBadgesUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
+      ), 'Badge'
+    );
+  }
+
+
+  /*
+   * A method for the /badges/{ids} endpoint: https://api.stackexchange.com/docs/badges-by-ids
+   * Gets the badges identified in id.
+   * {ids} can contain up to 100 semicolon delimited ids.
+   * To find ids programmatically look for badgeId on Badge objects.
+   * This method returns an array of badges (Badge[]) wrapped in a Wrapper.
+   */
+  public static async getBadgesByIds (
+    options: GetBadgesByIdsOptions
+  ): Promise<Wrapper<Badge>> {
+    const getBadgesByIdsUrl = new URL(`/badges/${this.semiDelimitedListHandler(options.ids)}`, this.baseUrl);
+
+    if (options.fromDate) {
+      getBadgesByIdsUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
+    }
+    if (options.max) {
+      getBadgesByIdsUrl.searchParams.append('max', options.max);
+    }
+    if (options.min) {
+      getBadgesByIdsUrl.searchParams.append('min', options.min);
+    }
+    if (options.order) {
+      getBadgesByIdsUrl.searchParams.append('order', options.order);
+    }
+    if (options.page) {
+      getBadgesByIdsUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getBadgesByIdsUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    getBadgesByIdsUrl.searchParams.append('site', options.site);
+    if (options.sort) {
+      getBadgesByIdsUrl.searchParams.append('sort', options.sort);
+    }
+    if (options.toDate) {
+      getBadgesByIdsUrl.searchParams.append('todate', this.dateHandler(options.toDate));
+    }
+
+    return new Wrapper(
+      await rp.get(
+        getBadgesByIdsUrl.href, {
           headers: {
             'accept-encoding': 'gzip',
           },
