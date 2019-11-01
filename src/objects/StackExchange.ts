@@ -19,6 +19,7 @@ import {GetCommentsOptions} from '../method-options/StackExchange/GetCommentsOpt
 import {GetCommentsByIdsOptions} from '../method-options/StackExchange/GetCommentsByIdsOptions';
 import {GetCommentsOnAnswersOptions} from '../method-options/StackExchange/GetCommentsOnAnswersOptions';
 import {GetPrivilegesOptions} from '../method-options/StackExchange/GetPrivilegesOptions';
+import {GetRecipientsBadgesOptions} from '../method-options/StackExchange/GetRecipientsBadgesOptions';
 import {GetSitesOptions} from '../method-options/StackExchange/GetSitesOptions';
 import {GetTagsOptions} from '../method-options/StackExchange/GetTagsOptions';
 import {SearchOptions} from '../method-options/StackExchange/SearchOptions';
@@ -377,6 +378,60 @@ export class StackExchange {
 
 
   /*
+   * A method for the /badges/name endpoint: https://api.stackexchange.com/docs/badges-by-name
+   * Gets all explicitly named badges in the system.
+   * This method returns an array of badges (Badge[]) wrapped in a Wrapper.
+   */
+  public static getNamedBadges (
+    options: Omit<GetBadgesOptions, 'named'>
+  ): Promise<Wrapper<Badge>> {
+    return this.getBadges({
+      ...options,
+      named: true,
+    });
+  }
+
+
+  /*
+   * A method for the /badges/recipients endpoint: https://api.stackexchange.com/docs/badges-recipients
+   * As these badges have been awarded, they will have the Badge.user property set.
+   * Returns recently awarded badges in the system.
+   * This method returns an array of badges (Badge[]) wrapped in a Wrapper.
+   */
+  public static async getRecipientsBadges (
+    options: GetRecipientsBadgesOptions
+  ): Promise<Wrapper<Badge>> {
+    const getRecipientsBadgesUrl = new URL('/badges/recipients', this.baseUrl);
+
+    if (options.fromDate) {
+      getRecipientsBadgesUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
+    }
+    if (options.page) {
+      getRecipientsBadgesUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getRecipientsBadgesUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    getRecipientsBadgesUrl.searchParams.append('site', options.site);
+    if (options.toDate) {
+      getRecipientsBadgesUrl.searchParams.append('todate', this.dateHandler(options.toDate));
+    }
+
+    return new Wrapper(
+      await rp.get(
+        getRecipientsBadgesUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
+      ), 'Badge'
+    );
+  }
+
+
+  /*
    * A method for the /comments endpoint: https://api.stackexchange.com/docs/comments
    * Gets all the comments on the site.
    * The sorts accepted by this method operate on the following fields of the Comment object:
@@ -697,21 +752,6 @@ export class StackExchange {
     return this.getTags({
       ...options,
       moderatorOnly: true,
-    });
-  }
-
-
-  /*
-   * A method for the /badges/name endpoint: https://api.stackexchange.com/docs/badges-by-name
-   * Gets all explicitly named badges in the system.
-   * This method returns an array of badges (Badge[]) wrapped in a Wrapper.
-   */
-  public static getNamedBadges (
-    options: Omit<GetBadgesOptions, 'named'>
-  ): Promise<Wrapper<Badge>> {
-    return this.getBadges({
-      ...options,
-      named: true,
     });
   }
 
