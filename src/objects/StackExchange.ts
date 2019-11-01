@@ -20,6 +20,7 @@ import {GetCommentsByIdsOptions} from '../method-options/StackExchange/GetCommen
 import {GetCommentsOnAnswersOptions} from '../method-options/StackExchange/GetCommentsOnAnswersOptions';
 import {GetPrivilegesOptions} from '../method-options/StackExchange/GetPrivilegesOptions';
 import {GetRecipientsBadgesOptions} from '../method-options/StackExchange/GetRecipientsBadgesOptions';
+import {GetRecipientsBadgesByIdsOptions} from '../method-options/StackExchange/GetRecipientsBadgesByIdsOptions';
 import {GetSitesOptions} from '../method-options/StackExchange/GetSitesOptions';
 import {GetTagsOptions} from '../method-options/StackExchange/GetTagsOptions';
 import {SearchOptions} from '../method-options/StackExchange/SearchOptions';
@@ -394,8 +395,8 @@ export class StackExchange {
 
   /*
    * A method for the /badges/recipients endpoint: https://api.stackexchange.com/docs/badges-recipients
-   * As these badges have been awarded, they will have the Badge.user property set.
    * Returns recently awarded badges in the system.
+   * As these badges have been awarded, they will have the Badge.user property set.
    * This method returns an array of badges (Badge[]) wrapped in a Wrapper.
    */
   public static async getRecipientsBadges (
@@ -420,6 +421,47 @@ export class StackExchange {
     return new Wrapper(
       await rp.get(
         getRecipientsBadgesUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
+      ), 'Badge'
+    );
+  }
+
+
+  /*
+   * A method for the /badges/{ids}/recipients endpoint: https://api.stackexchange.com/docs/badges-recipients-by-ids
+   * Returns recently awarded badges in the system, constrained to a certain set of badges.
+   * As these badges have been awarded, they will have the Badge.user property set.
+   * {ids} can contain up to 100 semicolon delimited ids.
+   * To find ids programmatically look for badgeId on Badge objects.
+   * This method returns an array of badges (Badge[]) wrapped in a Wrapper.
+   */
+  public static async getRecipientsBadgesByIds (
+    options: GetRecipientsBadgesByIdsOptions
+  ): Promise<Wrapper<Badge>> {
+    const getRecipientsBadgesByIdsUrl = new URL(`/badges/${this.semiDelimitedListHandler(options.ids)}/recipients`, this.baseUrl);
+
+    if (options.fromDate) {
+      getRecipientsBadgesByIdsUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
+    }
+    if (options.page) {
+      getRecipientsBadgesByIdsUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getRecipientsBadgesByIdsUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    getRecipientsBadgesByIdsUrl.searchParams.append('site', options.site);
+    if (options.toDate) {
+      getRecipientsBadgesByIdsUrl.searchParams.append('todate', this.dateHandler(options.toDate));
+    }
+
+    return new Wrapper(
+      await rp.get(
+        getRecipientsBadgesByIdsUrl.href, {
           headers: {
             'accept-encoding': 'gzip',
           },
