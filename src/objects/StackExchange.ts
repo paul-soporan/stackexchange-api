@@ -18,6 +18,7 @@ import {GetBadgesByIdsOptions} from '../method-options/StackExchange/GetBadgesBy
 import {GetCommentsOptions} from '../method-options/StackExchange/GetCommentsOptions';
 import {GetCommentsByIdsOptions} from '../method-options/StackExchange/GetCommentsByIdsOptions';
 import {GetCommentsOnAnswersOptions} from '../method-options/StackExchange/GetCommentsOnAnswersOptions';
+import {GetNamedOrTagBasedBadgesOptions} from '../method-options/StackExchange/GetNamedOrTagBasedBadgesOptions';
 import {GetPrivilegesOptions} from '../method-options/StackExchange/GetPrivilegesOptions';
 import {GetRecipientsBadgesOptions} from '../method-options/StackExchange/GetRecipientsBadgesOptions';
 import {GetRecipientsBadgesByIdsOptions} from '../method-options/StackExchange/GetRecipientsBadgesByIdsOptions';
@@ -278,7 +279,19 @@ export class StackExchange {
     let getBadgesUrlPath = '/badges';
 
     if (options.named) {
-      getBadgesUrlPath += '/name';
+      if (options.tagBased) {
+        throw Error('The `named` and `tagBased` options are mutually exclusive');
+      } else {
+        getBadgesUrlPath += '/name';
+      }
+    }
+
+    if (options.tagBased) {
+      if (options.named) {
+        throw Error('The `named` and `tagBased` options are mutually exclusive');
+      } else {
+        getBadgesUrlPath += '/tags';
+      }
     }
 
     const getBadgesUrl = new URL(getBadgesUrlPath, this.baseUrl);
@@ -384,11 +397,26 @@ export class StackExchange {
    * This method returns an array of badges (Badge[]) wrapped in a Wrapper.
    */
   public static getNamedBadges (
-    options: Omit<GetBadgesOptions, 'named'>
+    options: GetNamedOrTagBasedBadgesOptions
   ): Promise<Wrapper<Badge>> {
     return this.getBadges({
       ...options,
       named: true,
+    });
+  }
+
+
+  /*
+   * A method for the /badges/tags endpoint: https://api.stackexchange.com/docs/badges-by-tag
+   * Returns the badges that are awarded for participation in specific tags.
+   * This method returns an array of badges (Badge[]) wrapped in a Wrapper.
+   */
+  public static getTagBasedBadges (
+    options: GetNamedOrTagBasedBadgesOptions
+  ): Promise<Wrapper<Badge>> {
+    return this.getBadges({
+      ...options,
+      tagBased: true,
     });
   }
 
