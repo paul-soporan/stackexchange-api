@@ -1,4 +1,5 @@
 import {Answer as _Answer} from './objects/Answer';
+import {Badge as _Badge} from './objects/Badge';
 import {BadgeCount as _BadgeCount} from './objects/BadgeCount';
 import {ClosedDetails as _ClosedDetails} from './objects/ClosedDetails';
 import {Comment as _Comment} from './objects/Comment';
@@ -17,6 +18,7 @@ import {Wrapper as _Wrapper} from './objects/Wrapper';
 
 export {
   _Answer as Answer,
+  _Badge as Badge,
   _BadgeCount as BadgeCount,
   _ClosedDetails as ClosedDetails,
   _Comment as Comment,

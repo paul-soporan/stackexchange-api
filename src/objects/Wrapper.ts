@@ -1,4 +1,5 @@
 import {Answer} from './Answer';
+import {Badge} from './Badge';
 import {Comment} from './Comment';
 import {Privilege} from './Privilege';
 import {Question} from './Question';
@@ -6,6 +7,7 @@ import {Site} from './Site';
 import {Tag} from './Tag';
 
 import {TypeAnswer} from '../result-types/TypeAnswer';
+import {TypeBadge} from '../result-types/TypeBadge';
 import {TypeComment} from '../result-types/TypeComment';
 import {TypePrivilege} from '../result-types/TypePrivilege';
 import {TypeQuestion} from '../result-types/TypeQuestion';
@@ -15,7 +17,7 @@ import {TypeTag} from '../result-types/TypeTag';
 import {TypeWrapper} from '../result-types/TypeWrapper';
 
 
-type ClassType = 'Answer' | 'Comment' | 'Privilege' | 'Question' | 'Site' | 'Tag';
+type ClassType = 'Answer' | 'Badge' | 'Comment' | 'Privilege' | 'Question' | 'Site' | 'Tag';
 
 export class Wrapper {
 
@@ -31,6 +33,7 @@ export class Wrapper {
 
   public items:
     | Answer[]
+    | Badge[]
     | Comment[]
     | Privilege[]
     | Question[]
@@ -60,6 +63,11 @@ export class Wrapper {
         this.items
           = [...wrapper.items]
             .map((item: TypeAnswer) => new Answer(item));
+        break;
+      case 'Badge':
+        this.items
+          = [...wrapper.items]
+            .map((item: TypeBadge) => new Badge(item));
         break;
       case 'Comment':
         this.items

@@ -5,6 +5,7 @@ import {Wrapper} from '../objects/Wrapper';
 import {AdvancedSearchOptions} from '../method-options/StackExchange/AdvancedSearchOptions';
 import {GetAnswersOptions} from '../method-options/StackExchange/GetAnswersOptions';
 import {GetAnswersByIdsOptions} from '../method-options/StackExchange/GetAnswersByIdsOptions';
+import {GetBadgesOptions} from '../method-options/StackExchange/GetBadgesOptions';
 import {GetCommentsOptions} from '../method-options/StackExchange/GetCommentsOptions';
 import {GetCommentsByIdsOptions} from '../method-options/StackExchange/GetCommentsByIdsOptions';
 import {GetCommentsOnAnswersOptions} from '../method-options/StackExchange/GetCommentsOnAnswersOptions';
@@ -251,6 +252,59 @@ export class StackExchange {
           json: true,
         }
       ), 'Answer'
+    );
+  }
+
+
+  /*
+   * A method for the /badges endpoint: https://api.stackexchange.com/docs/badges
+   * Returns all the badges in the system.
+   * This method returns an array of badges (Badge[]) wrapped in a Wrapper.
+   */
+  public static async getBadges (
+    options: GetBadgesOptions
+  ): Promise<Wrapper> {
+    const getBadgesUrl = new URL('/badges', this.baseUrl);
+
+    if (options.fromDate) {
+      getBadgesUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
+    }
+    if (options.inName) {
+      getBadgesUrl.searchParams.append('inname', options.inName);
+    }
+    if (options.max) {
+      getBadgesUrl.searchParams.append('max', options.max);
+    }
+    if (options.min) {
+      getBadgesUrl.searchParams.append('min', options.min);
+    }
+    if (options.order) {
+      getBadgesUrl.searchParams.append('order', options.order);
+    }
+    if (options.page) {
+      getBadgesUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getBadgesUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    getBadgesUrl.searchParams.append('site', options.site);
+    if (options.sort) {
+      getBadgesUrl.searchParams.append('sort', options.sort);
+    }
+    if (options.toDate) {
+      getBadgesUrl.searchParams.append('todate', this.dateHandler(options.toDate));
+    }
+
+    return new Wrapper(
+      await rp.get(
+        getBadgesUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
+      ), 'Badge'
     );
   }
 

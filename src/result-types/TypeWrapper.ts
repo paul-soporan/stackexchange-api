@@ -1,4 +1,5 @@
 import {TypeAnswer} from './TypeAnswer';
+import {TypeBadge} from './TypeBadge';
 import {TypeComment} from './TypeComment';
 import {TypePrivilege} from './TypePrivilege';
 import {TypeQuestion} from './TypeQuestion';
@@ -13,6 +14,7 @@ export interface TypeWrapper {
   has_more: boolean;
   items:
     | TypeAnswer[]
+    | TypeBadge[]
     | TypeComment[]
     | TypePrivilege[]
     | TypeQuestion[]
