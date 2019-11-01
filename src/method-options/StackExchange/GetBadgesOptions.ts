@@ -3,6 +3,7 @@ export interface GetBadgesOptions {
   inName?: string;
   max?: 'gold' | 'silver' | 'bronze';
   min?: 'gold' | 'silver' | 'bronze';
+  named?: boolean;
   order?: 'desc' | 'asc';
   page?: number;
   pageSize?: number;

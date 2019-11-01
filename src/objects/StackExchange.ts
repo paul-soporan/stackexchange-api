@@ -273,7 +273,13 @@ export class StackExchange {
   public static async getBadges (
     options: GetBadgesOptions
   ): Promise<Wrapper<Badge>> {
-    const getBadgesUrl = new URL('/badges', this.baseUrl);
+    let getBadgesUrlPath = '/badges';
+
+    if (options.named) {
+      getBadgesUrlPath += '/name';
+    }
+
+    const getBadgesUrl = new URL(getBadgesUrlPath, this.baseUrl);
 
     if (options.fromDate) {
       getBadgesUrl.searchParams.append('fromdate', this.dateHandler(options.fromDate));
@@ -691,6 +697,21 @@ export class StackExchange {
     return this.getTags({
       ...options,
       moderatorOnly: true,
+    });
+  }
+
+
+  /*
+   * A method for the /badges/name endpoint: https://api.stackexchange.com/docs/badges-by-name
+   * Gets all explicitly named badges in the system.
+   * This method returns an array of badges (Badge[]) wrapped in a Wrapper.
+   */
+  public static getNamedBadges (
+    options: Omit<GetBadgesOptions, 'named'>
+  ): Promise<Wrapper<Badge>> {
+    return this.getBadges({
+      ...options,
+      named: true,
     });
   }
 
