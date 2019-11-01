@@ -19,7 +19,9 @@ import {TypeWrapper} from '../result-types/TypeWrapper';
 
 type ClassType = 'Answer' | 'Badge' | 'Comment' | 'Privilege' | 'Question' | 'Site' | 'Tag';
 
-export class Wrapper {
+export class Wrapper<
+  T extends Answer | Badge | Comment | Privilege | Question | Site | Tag
+> {
 
   public backoff?: number;
 
@@ -31,14 +33,7 @@ export class Wrapper {
 
   public hasMore: boolean;
 
-  public items:
-    | Answer[]
-    | Badge[]
-    | Comment[]
-    | Privilege[]
-    | Question[]
-    | Site[]
-    | Tag[];
+  public items: T[];
 
   public page?: number;
 
@@ -62,37 +57,37 @@ export class Wrapper {
       case 'Answer':
         this.items
           = [...wrapper.items]
-            .map((item: TypeAnswer) => new Answer(item));
+            .map((item: TypeAnswer) => new Answer(item)) as T[];
         break;
       case 'Badge':
         this.items
           = [...wrapper.items]
-            .map((item: TypeBadge) => new Badge(item));
+            .map((item: TypeBadge) => new Badge(item)) as T[];
         break;
       case 'Comment':
         this.items
           = [...wrapper.items]
-            .map((item: TypeComment) => new Comment(item));
+            .map((item: TypeComment) => new Comment(item)) as T[];
         break;
       case 'Privilege':
         this.items
           = [...wrapper.items]
-            .map((item: TypePrivilege) => new Privilege(item));
+            .map((item: TypePrivilege) => new Privilege(item)) as T[];
         break;
       case 'Question':
         this.items
           = [...wrapper.items]
-            .map((item: TypeQuestion) => new Question(item));
+            .map((item: TypeQuestion) => new Question(item)) as T[];
         break;
       case 'Site':
         this.items
           = [...wrapper.items]
-            .map((item: TypeSite) => new Site(item));
+            .map((item: TypeSite) => new Site(item)) as T[];
         break;
       case 'Tag':
         this.items
           = [...wrapper.items]
-            .map((item: TypeTag) => new Tag(item));
+            .map((item: TypeTag) => new Tag(item)) as T[];
         break;
       default:
         this.items = null;

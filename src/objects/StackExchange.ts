@@ -2,6 +2,14 @@ import * as rp from 'request-promise';
 
 import {Wrapper} from '../objects/Wrapper';
 
+import {Answer} from './Answer';
+import {Badge} from './Badge';
+import {Comment} from './Comment';
+import {Privilege} from './Privilege';
+import {Question} from './Question';
+import {Site} from './Site';
+import {Tag} from './Tag';
+
 import {AdvancedSearchOptions} from '../method-options/StackExchange/AdvancedSearchOptions';
 import {GetAnswersOptions} from '../method-options/StackExchange/GetAnswersOptions';
 import {GetAnswersByIdsOptions} from '../method-options/StackExchange/GetAnswersByIdsOptions';
@@ -46,7 +54,7 @@ export class StackExchange {
    */
   public static async advancedSearch (
     options: AdvancedSearchOptions
-  ): Promise<Wrapper> {
+  ): Promise<Wrapper<Question>> {
     const advancedSearchUrl = new URL('/search/advanced', this.baseUrl);
 
     if (options.accepted) {
@@ -153,7 +161,7 @@ export class StackExchange {
    */
   public static async getAnswers (
     options: GetAnswersOptions
-  ): Promise<Wrapper> {
+  ): Promise<Wrapper<Answer>> {
     const getAnswersUrl = new URL('/answers', this.baseUrl);
 
     if (options.fromDate) {
@@ -213,7 +221,7 @@ export class StackExchange {
    */
   public static async getAnswersByIds (
     options: GetAnswersByIdsOptions
-  ): Promise<Wrapper> {
+  ): Promise<Wrapper<Answer>> {
     const getAnswersByIdsUrl = new URL(`/answers/${this.semiDelimitedListHandler(options.ids)}`, this.baseUrl);
 
     if (options.fromDate) {
@@ -263,7 +271,7 @@ export class StackExchange {
    */
   public static async getBadges (
     options: GetBadgesOptions
-  ): Promise<Wrapper> {
+  ): Promise<Wrapper<Badge>> {
     const getBadgesUrl = new URL('/badges', this.baseUrl);
 
     if (options.fromDate) {
@@ -320,7 +328,7 @@ export class StackExchange {
    */
   public static async getComments (
     options: GetCommentsOptions
-  ): Promise<Wrapper> {
+  ): Promise<Wrapper<Comment>> {
     const getCommentsUrl = new URL('/comments', this.baseUrl);
 
     if (options.fromDate) {
@@ -376,7 +384,7 @@ export class StackExchange {
    */
   public static async getCommentsByIds (
     options: GetCommentsByIdsOptions
-  ): Promise<Wrapper> {
+  ): Promise<Wrapper<Comment>> {
     const getCommentsByIdsUrl = new URL(`/comments/${this.semiDelimitedListHandler(options.ids)}`, this.baseUrl);
 
     if (options.fromDate) {
@@ -432,7 +440,7 @@ export class StackExchange {
    */
   public static async getCommentsOnAnswers (
     options: GetCommentsOnAnswersOptions
-  ): Promise<Wrapper> {
+  ): Promise<Wrapper<Comment>> {
     const getCommentsOnAnswersUrl = new URL(`/answers/${this.semiDelimitedListHandler(options.ids)}/comments`, this.baseUrl);
 
     if (options.fromDate) {
@@ -485,7 +493,7 @@ export class StackExchange {
    */
   public static async getPrivileges (
     options: GetPrivilegesOptions
-  ): Promise<Wrapper> {
+  ): Promise<Wrapper<Privilege>> {
     const getPrivilegesUrl = new URL('/privileges', this.baseUrl);
 
     if (options.page) {
@@ -517,7 +525,7 @@ export class StackExchange {
    */
   public static async getSites (
     options: GetSitesOptions
-  ): Promise<Wrapper> {
+  ): Promise<Wrapper<Site>> {
     const getSitesUrl = new URL('/sites', this.baseUrl);
 
     if (options.page) {
@@ -554,7 +562,7 @@ export class StackExchange {
    * `popular` is the default sort.
    * This method returns an array of tags (Tag[]) wrapped in a Wrapper.
    */
-  public static async getTags (options: GetTagsOptions): Promise<Wrapper> {
+  public static async getTags (options: GetTagsOptions): Promise<Wrapper<Tag>> {
 
     let getTagsUrlPath = '/tags';
 
@@ -626,7 +634,7 @@ export class StackExchange {
    */
   public static getModeratorOnlyTags (
     options: Omit<GetTagsOptions, 'moderatorOnly' | 'required'>
-  ): Promise<Wrapper> {
+  ): Promise<Wrapper<Tag>> {
     return this.getTags({
       ...options,
       moderatorOnly: true,
@@ -642,7 +650,7 @@ export class StackExchange {
    */
   public static getRequiredTags (
     options: Omit<GetTagsOptions, 'moderatorOnly' | 'required'>
-  ): Promise<Wrapper> {
+  ): Promise<Wrapper<Tag>> {
     return this.getTags({
       ...options,
       required: true,
@@ -666,7 +674,7 @@ export class StackExchange {
    */
   public static async search (
     options: SearchOptions
-  ): Promise<Wrapper> {
+  ): Promise<Wrapper<Question>> {
     const searchUrl: URL = new URL('/search', this.baseUrl);
 
     if (options.fromDate) {
@@ -747,7 +755,7 @@ export class StackExchange {
    */
   public static async similarSearch (
     options: SimilarSearchOptions
-  ): Promise<Wrapper> {
+  ): Promise<Wrapper<Question>> {
     const similarSearchUrl: URL = new URL('/similar', this.baseUrl);
 
     if (options.fromDate) {
