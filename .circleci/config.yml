@@ -20,3 +20,62 @@ jobs:
       - run:
           name: Build Project
           command: npm run build
+  build-docs:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Build Docs
+          command: npm run build:docs
+      - persist_to_workspace:
+          root: docs
+          paths:
+            - .
+  deploy-docs:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run:
+          name: Update npm
+          command: 'sudo npm install -g npm@latest'
+      - attach_workspace:
+          at: docs
+      - run:
+          name: Install and Configure Dependencies
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "paul.soporan@gmail.com"
+            git config user.name "Paul Soporan"
+      - add_ssh_keys:
+          fingerprints:
+            - "e4:f7:30:c7:f0:f8:4b:3d:4a:af:98:d3:c7:05:b1:03"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dotfiles --message "[skip ci] Automatic docs update after commit $(echo $CIRCLE_SHA1 | cut -c -7)" --dist docs
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - build-docs
+      - deploy-docs:
+          requires:
+            - test
+            - build-docs
+          filters:
+            branches:
+              only: master
