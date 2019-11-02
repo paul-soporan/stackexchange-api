@@ -68,7 +68,13 @@
 				<a href="#stackexchange-api" id="stackexchange-api" style="color: inherit; text-decoration: none;">
 					<h1>stackexchange-api</h1>
 				</a>
+				<p><a href="https://www.npmjs.com/package/stackexchange-api"><img src="https://img.shields.io/npm/v/stackexchange-api" alt="npm"></a>
+					<a href="https://circleci.com/gh/paul-soporan/stackexchange-api"><img src="https://circleci.com/gh/paul-soporan/stackexchange-api.svg?style=svg" alt="CircleCI"></a>
+					<a href="https://www.npmjs.com/package/stackexchange-api"><img src="https://img.shields.io/npm/dw/stackexchange-api" alt="npm"></a>
+					<a href="https://github.com/paul-soporan/stackexchange-api/blob/master/LICENSE.md"><img src="https://img.shields.io/npm/l/stackexchange-api" alt="NPM"></a>
+				<a href="https://github.com/paul-soporan/XBot/issues?q=is%3Aissue+is%3Aopen"><img src="https://img.shields.io/github/issues/paul-soporan/stackexchange-api" alt="GitHub issues"></a></p>
 				<p><em>A Node.js wrapper for the StackExchange API</em></p>
+				<p><strong><a href="https://paul-soporan.github.io/stackexchange-api/">Documentation</a></strong></p>
 				<p><strong>Disclaimer: WIP. Doesn&#39;t work with many endpoints yet.</strong></p>
 				<a href="#features" id="features" style="color: inherit; text-decoration: none;">
 					<h2>Features:</h2>
@@ -103,37 +109,18 @@
 				</ul>
 				<p><strong>Example usage:</strong></p>
 				<pre><code class="language-js"><span class="hljs-keyword">import</span> {StackExchange} <span class="hljs-keyword">from</span> <span class="hljs-string">'stackexchange-api'</span>;
-StackExchange.search({
+StackExchange.search({ <span class="hljs-comment">// Equivalent to the /search endpoint. Go to https://paul-soporan.github.io/stackexchange-api/classes/stackexchange.html#search for details.</span>
   <span class="hljs-attr">inTitle</span>: <span class="hljs-string">'nodejs'</span>,
   <span class="hljs-attr">site</span>: <span class="hljs-string">'stackoverflow'</span>
 }).then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
   <span class="hljs-built_in">console</span>.log(result);
-  <span class="hljs-comment">// Output: the Wrapper</span>
+  <span class="hljs-comment">// Output: Wrapper&lt;Question&gt;</span>
   <span class="hljs-built_in">console</span>.log(result.items);
-  <span class="hljs-comment">// Output: an Array of the actual results, in this case, Questions</span>
+  <span class="hljs-comment">// Output: an array of Questions (Question[])</span>
   <span class="hljs-built_in">console</span>.log(result.items[<span class="hljs-number">0</span>]);
-  <span class="hljs-comment">// Output: the first actual result</span>
+  <span class="hljs-comment">// Output: the first Question</span>
   <span class="hljs-built_in">console</span>.log(result.items[<span class="hljs-number">0</span>].viewCount);
-  <span class="hljs-comment">// Output: the view count of the first result</span>
-});</code></pre>
-				<a href="#search" id="search" style="color: inherit; text-decoration: none;">
-					<h3>Search</h3>
-				</a>
-				<ul>
-					<li>The equivalent of <a href="https://api.stackexchange.com/docs/search">/search</a></li>
-					<li>Method of the <code>StackExchange</code> class<pre><code class="language-js">StackExchange.search(options);
-<span class="hljs-comment">// returns a Promise&lt;Wrapper&gt;</span></code></pre>
-					<code>options</code> contains one or more of the key-value pairs of the <a href="https://api.stackexchange.com/docs/search">Search Options</a>, where the key is camelCased</li>
-				</ul>
-				<p><strong>Example:</strong></p>
-				<pre><code class="language-js">StackExchange.search({
-  <span class="hljs-attr">inTitle</span>: <span class="hljs-string">'nodejs'</span>,
-  <span class="hljs-attr">site</span>: <span class="hljs-string">'stackoverflow'</span>,
-  <span class="hljs-attr">pageSize</span>: <span class="hljs-number">1</span>,
-  <span class="hljs-attr">sort</span>: <span class="hljs-string">'votes'</span>
-}).then(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> {
-  <span class="hljs-built_in">console</span>.log(result.items[<span class="hljs-number">0</span>].title);
-  <span class="hljs-comment">// Output: 'How can I update NodeJS and NPM to the next versions?'</span>
+  <span class="hljs-comment">// Output: the view count of the first Question</span>
 });</code></pre>
 			</div>
 		</div>
