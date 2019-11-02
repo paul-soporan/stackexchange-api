@@ -3,6 +3,7 @@ import {Badge as _Badge} from './objects/Badge';
 import {BadgeCount as _BadgeCount} from './objects/BadgeCount';
 import {ClosedDetails as _ClosedDetails} from './objects/ClosedDetails';
 import {Comment as _Comment} from './objects/Comment';
+import {Info as _Info} from './objects/Info';
 import {MigrationInfo as _MigrationInfo} from './objects/MigrationInfo';
 import {Notice as _Notice} from './objects/Notice';
 import {OriginalQuestion as _OriginalQuestion} from './objects/OriginalQuestion';
@@ -22,6 +23,7 @@ export {
   _BadgeCount as BadgeCount,
   _ClosedDetails as ClosedDetails,
   _Comment as Comment,
+  _Info as Info,
   _MigrationInfo as MigrationInfo,
   _Notice as Notice,
   _OriginalQuestion as OriginalQuestion,

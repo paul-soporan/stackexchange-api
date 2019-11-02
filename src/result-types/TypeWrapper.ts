@@ -1,6 +1,7 @@
 import {TypeAnswer} from './TypeAnswer';
 import {TypeBadge} from './TypeBadge';
 import {TypeComment} from './TypeComment';
+import {TypeInfo} from './TypeInfo';
 import {TypePrivilege} from './TypePrivilege';
 import {TypeQuestion} from './TypeQuestion';
 import {TypeSite} from './TypeSite';
@@ -16,6 +17,7 @@ export interface TypeWrapper {
     | TypeAnswer[]
     | TypeBadge[]
     | TypeComment[]
+    | TypeInfo[]
     | TypePrivilege[]
     | TypeQuestion[]
     | TypeSite[]

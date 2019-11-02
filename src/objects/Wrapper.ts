@@ -1,6 +1,7 @@
 import {Answer} from './Answer';
 import {Badge} from './Badge';
 import {Comment} from './Comment';
+import {Info} from './Info';
 import {Privilege} from './Privilege';
 import {Question} from './Question';
 import {Site} from './Site';
@@ -9,6 +10,7 @@ import {Tag} from './Tag';
 import {TypeAnswer} from '../result-types/TypeAnswer';
 import {TypeBadge} from '../result-types/TypeBadge';
 import {TypeComment} from '../result-types/TypeComment';
+import {TypeInfo} from '../result-types/TypeInfo';
 import {TypePrivilege} from '../result-types/TypePrivilege';
 import {TypeQuestion} from '../result-types/TypeQuestion';
 import {TypeSite} from '../result-types/TypeSite';
@@ -17,10 +19,10 @@ import {TypeTag} from '../result-types/TypeTag';
 import {TypeWrapper} from '../result-types/TypeWrapper';
 
 
-type ClassType = 'Answer' | 'Badge' | 'Comment' | 'Privilege' | 'Question' | 'Site' | 'Tag';
+type ClassType = 'Answer' | 'Badge' | 'Comment' | 'Info' | 'Privilege' | 'Question' | 'Site' | 'Tag';
 
 export class Wrapper<
-  T extends Answer | Badge | Comment | Privilege | Question | Site | Tag
+  T extends Answer | Badge | Comment | Info | Privilege | Question | Site | Tag
 > {
 
   public backoff?: number;
@@ -68,6 +70,11 @@ export class Wrapper<
         this.items
           = [...wrapper.items]
             .map((item: TypeComment) => new Comment(item)) as T[];
+        break;
+      case 'Info':
+        this.items
+          = [...wrapper.items]
+            .map((item: TypeInfo) => new Info(item)) as T[];
         break;
       case 'Privilege':
         this.items

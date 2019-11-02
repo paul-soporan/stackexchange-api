@@ -5,6 +5,7 @@ import {Wrapper} from '../objects/Wrapper';
 import {Answer} from './Answer';
 import {Badge} from './Badge';
 import {Comment} from './Comment';
+import {Info} from './Info';
 import {Privilege} from './Privilege';
 import {Question} from './Question';
 import {Site} from './Site';
@@ -18,6 +19,7 @@ import {GetBadgesByIdsOptions} from '../method-options/StackExchange/GetBadgesBy
 import {GetCommentsOptions} from '../method-options/StackExchange/GetCommentsOptions';
 import {GetCommentsByIdsOptions} from '../method-options/StackExchange/GetCommentsByIdsOptions';
 import {GetCommentsOnAnswersOptions} from '../method-options/StackExchange/GetCommentsOnAnswersOptions';
+import {GetInfoOptions} from '../method-options/StackExchange/GetInfoOptions';
 import {GetNamedOrTagBasedBadgesOptions} from '../method-options/StackExchange/GetNamedOrTagBasedBadgesOptions';
 import {GetPrivilegesOptions} from '../method-options/StackExchange/GetPrivilegesOptions';
 import {GetRecipientsBadgesOptions} from '../method-options/StackExchange/GetRecipientsBadgesOptions';
@@ -663,6 +665,33 @@ export class StackExchange {
           json: true,
         }
       ), 'Comment'
+    );
+  }
+
+
+  /*
+   * A method for the /info endpoint: https://api.stackexchange.com/docs/info
+   * Returns a collection of statistics about the site.
+   * Data to facilitate per-site customization, discover related sites, and aggregate statistics is all returned by this method.
+   * This method returns an array of info objects (Info[]) wrapped in a Wrapper.
+   */
+  public static async getInfo (
+    options: GetInfoOptions
+  ): Promise<Wrapper<Info>> {
+    const getInfoUrl = new URL('/info', this.baseUrl);
+
+    getInfoUrl.searchParams.append('site', options.site);
+
+    return new Wrapper(
+      await rp.get(
+        getInfoUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
+      ), 'Info'
     );
   }
 
