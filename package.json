@@ -10,8 +10,10 @@
   },
   "license": "MIT",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
+    "prepare": "npm run build",
     "build": "tsc",
-    "prepare": "npm run build"
+    "build:docs": "npx typedoc --out docs src/ --mode file --excludePrivate --excludeProtected --theme ./node_modules/typedoc-dark-theme/bin/default"
   },
   "keywords": [
     "stackexchange",
@@ -35,10 +37,14 @@
     "@typescript-eslint/eslint-plugin": "^2.4.0",
     "@typescript-eslint/parser": "^2.4.0",
     "eslint": "^6.5.1",
-    "typescript": "^3.7.0-beta"
+    "typedoc-dark-theme": "0.0.11",
+    "typescript": "^3.7.1-rc"
   },
   "dependencies": {
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
+  },
+  "resolutions": {
+    "typescript": "^3.7.1-rc"
   }
 }
