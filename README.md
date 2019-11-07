@@ -1,9 +1,9 @@
 # stackexchange-api
 [![npm](https://img.shields.io/npm/v/stackexchange-api)](https://www.npmjs.com/package/stackexchange-api)
-[![CircleCI](https://circleci.com/gh/paul-soporan/stackexchange-api.svg?style=svg)](https://circleci.com/gh/paul-soporan/stackexchange-api)
+[![CircleCI](https://circleci.com/gh/paul-soporan/stackexchange-api.svg?style=shield)](https://circleci.com/gh/paul-soporan/stackexchange-api)
 [![npm](https://img.shields.io/npm/dw/stackexchange-api)](https://www.npmjs.com/package/stackexchange-api)
 [![NPM](https://img.shields.io/npm/l/stackexchange-api)](https://github.com/paul-soporan/stackexchange-api/blob/master/LICENSE.md)
-[![GitHub issues](https://img.shields.io/github/issues/paul-soporan/stackexchange-api)](https://github.com/paul-soporan/XBot/issues?q=is%3Aissue+is%3Aopen)
+[![GitHub issues](https://img.shields.io/github/issues/paul-soporan/stackexchange-api)](https://github.com/paul-soporan/stackexchange-api/issues?q=is%3Aissue+is%3Aopen)
 
 *A Node.js wrapper for the StackExchange API*
 
