@@ -67,6 +67,15 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The equivalent of <a href="https://api.stackexchange.com/docs/types/answer">Type answer</a>.<br>
+							This object represents an Answer to a <a href="question.html">Question</a> on one of the <a href="https://stackexchange.com/sites">Stack Exchange sites</a>.<br>
+						As on the <a href="question.html">Question</a> page, it is possible to fetch the <a href="comment.html">Comments</a> on an Answer as part of a call; though this is not done by default.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -132,7 +141,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L60">objects/Answer.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L92">objects/Answer.ts:92</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -154,7 +163,7 @@
 					<div class="tsd-signature tsd-kind-icon">accepted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L8">objects/Answer.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L13">objects/Answer.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -164,9 +173,14 @@
 					<div class="tsd-signature tsd-kind-icon">answer<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L10">objects/Answer.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L18">objects/Answer.ts:18</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Refers to an <a href="answer.html">Answer</a></p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="awardedbountyamount" class="tsd-anchor"></a>
@@ -174,9 +188,14 @@
 					<div class="tsd-signature tsd-kind-icon">awarded<wbr>Bounty<wbr>Amount<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L12">objects/Answer.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L23">objects/Answer.ts:23</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><em>May be absent, in which case it is set to <code>null</code></em></p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="awardedbountyusers" class="tsd-anchor"></a>
@@ -184,9 +203,14 @@
 					<div class="tsd-signature tsd-kind-icon">awarded<wbr>Bounty<wbr>Users<span class="tsd-signature-symbol">:</span> <a href="shallowuser.html" class="tsd-signature-type">ShallowUser</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L14">objects/Answer.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L28">objects/Answer.ts:28</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><em>May be absent, in which case it is set to <code>null</code></em></p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="body" class="tsd-anchor"></a>
@@ -194,7 +218,7 @@
 					<div class="tsd-signature tsd-kind-icon">body<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L16">objects/Answer.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L30">objects/Answer.ts:30</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -204,7 +228,7 @@
 					<div class="tsd-signature tsd-kind-icon">body<wbr>Markdown<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L18">objects/Answer.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L32">objects/Answer.ts:32</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -214,7 +238,7 @@
 					<div class="tsd-signature tsd-kind-icon">can<wbr>Flag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L20">objects/Answer.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L34">objects/Answer.ts:34</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -224,7 +248,7 @@
 					<div class="tsd-signature tsd-kind-icon">comment<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L22">objects/Answer.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L36">objects/Answer.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -234,9 +258,14 @@
 					<div class="tsd-signature tsd-kind-icon">comments<span class="tsd-signature-symbol">:</span> <a href="comment.html" class="tsd-signature-type">Comment</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L24">objects/Answer.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L41">objects/Answer.ts:41</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><em>May be absent, in which case it is set to <code>null</code></em></p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="communityowneddate" class="tsd-anchor"></a>
@@ -244,9 +273,14 @@
 					<div class="tsd-signature tsd-kind-icon">community<wbr>Owned<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L26">objects/Answer.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L46">objects/Answer.ts:46</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><em>May be absent, in which case it is set to <code>null</code></em></p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="creationdate" class="tsd-anchor"></a>
@@ -254,7 +288,7 @@
 					<div class="tsd-signature tsd-kind-icon">creation<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L28">objects/Answer.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L48">objects/Answer.ts:48</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -264,7 +298,7 @@
 					<div class="tsd-signature tsd-kind-icon">down<wbr>Vote<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L30">objects/Answer.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L50">objects/Answer.ts:50</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -274,7 +308,7 @@
 					<div class="tsd-signature tsd-kind-icon">downvoted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L32">objects/Answer.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L52">objects/Answer.ts:52</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -284,7 +318,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Accepted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L34">objects/Answer.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L54">objects/Answer.ts:54</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -294,7 +328,7 @@
 					<div class="tsd-signature tsd-kind-icon">last<wbr>Activity<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L36">objects/Answer.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L56">objects/Answer.ts:56</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -304,9 +338,14 @@
 					<div class="tsd-signature tsd-kind-icon">last<wbr>Edit<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L38">objects/Answer.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L61">objects/Answer.ts:61</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><em>May be absent, in which case it is set to <code>null</code></em></p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="lasteditor" class="tsd-anchor"></a>
@@ -314,7 +353,7 @@
 					<div class="tsd-signature tsd-kind-icon">last<wbr>Editor<span class="tsd-signature-symbol">:</span> <a href="shallowuser.html" class="tsd-signature-type">ShallowUser</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L40">objects/Answer.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L63">objects/Answer.ts:63</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -324,7 +363,7 @@
 					<div class="tsd-signature tsd-kind-icon">link<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L42">objects/Answer.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L65">objects/Answer.ts:65</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -334,9 +373,14 @@
 					<div class="tsd-signature tsd-kind-icon">locked<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L44">objects/Answer.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L70">objects/Answer.ts:70</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><em>May be absent, in which case it is set to <code>null</code></em></p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="owner" class="tsd-anchor"></a>
@@ -344,9 +388,14 @@
 					<div class="tsd-signature tsd-kind-icon">owner<span class="tsd-signature-symbol">:</span> <a href="shallowuser.html" class="tsd-signature-type">ShallowUser</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L46">objects/Answer.ts:46</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L75">objects/Answer.ts:75</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><em>May be absent, in which case it is set to <code>null</code></em></p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="questionid" class="tsd-anchor"></a>
@@ -354,9 +403,14 @@
 					<div class="tsd-signature tsd-kind-icon">question<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L48">objects/Answer.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L80">objects/Answer.ts:80</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Refers to a <a href="question.html">Question</a></p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="score" class="tsd-anchor"></a>
@@ -364,7 +418,7 @@
 					<div class="tsd-signature tsd-kind-icon">score<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L50">objects/Answer.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L82">objects/Answer.ts:82</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -374,7 +428,7 @@
 					<div class="tsd-signature tsd-kind-icon">share<wbr>Link<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L52">objects/Answer.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L84">objects/Answer.ts:84</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -384,7 +438,7 @@
 					<div class="tsd-signature tsd-kind-icon">tags<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L54">objects/Answer.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L86">objects/Answer.ts:86</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -394,7 +448,7 @@
 					<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L56">objects/Answer.ts:56</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L88">objects/Answer.ts:88</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -404,7 +458,7 @@
 					<div class="tsd-signature tsd-kind-icon">up<wbr>Vote<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L58">objects/Answer.ts:58</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L90">objects/Answer.ts:90</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -414,7 +468,7 @@
 					<div class="tsd-signature tsd-kind-icon">upvoted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/fd93549/src/objects/Answer.ts#L60">objects/Answer.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/8f3291b/src/objects/Answer.ts#L92">objects/Answer.ts:92</a></li>
 						</ul>
 					</aside>
 				</section>
