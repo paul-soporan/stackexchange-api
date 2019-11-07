@@ -1,7 +1,14 @@
 import {TypeRelatedSite} from '../result-types/TypeRelatedSite';
 
+/**
+ * The equivalent of [Type related_site](https://api.stackexchange.com/docs/types/related-site).<br>
+ * This object represents a [[Site]] that is related in some way to another [[Site]].
+ */
 export class RelatedSite {
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public apiSiteParameter?: string;
 
   public name: string;

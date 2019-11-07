@@ -21,16 +21,33 @@ import {TypeWrapper} from '../result-types/TypeWrapper';
 
 type ClassType = 'Answer' | 'Badge' | 'Comment' | 'Info' | 'Privilege' | 'Question' | 'Site' | 'Tag';
 
+/**
+ * The equivalent of the [Common Wrapper Object](https://api.stackexchange.com/docs/wrapper).<br>
+ * All responses in the API share a common format, so as to make parsing these responses simpler.
+ */
 export class Wrapper<
   T extends Answer | Badge | Comment | Info | Privilege | Question | Site | Tag
 > {
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public backoff?: number;
 
+  /**
+   * Refers to an [[Error]]<br>
+   * *May be absent, in which case it is set to `null`*
+   */
   public errorId?: number;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public errorMessage?: string;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public errorName?: string;
 
   public hasMore: boolean;

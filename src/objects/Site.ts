@@ -3,18 +3,31 @@ import {Styling} from './Styling';
 
 import {TypeSite} from '../result-types/TypeSite';
 
+/**
+ * The equivalent of [Type site](https://api.stackexchange.com/docs/types/site).<br>
+ * This object represents a Site in the [Stack Exchange network](https://stackexchange.com/sites).
+ */
 export class Site {
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public aliases?: string[];
 
   public apiSiteParameter: string;
 
   public audience: string;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public closedBetaDate?: Date;
 
   public faviconUrl: string;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public highResolutionIconUrl?: string;
 
   public iconUrl: string;
@@ -23,12 +36,21 @@ export class Site {
 
   public logoUrl: string;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public markdownExtensions?: Array<'MathJax' | 'Prettify' | 'Balsamiq' | 'jTab'>;
 
   public name: string;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public openBetaDate?: Date;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public relatedSites?: RelatedSite[];
 
   public siteState: 'normal' | 'closed_beta' | 'open_beta' | 'linked_meta';
@@ -39,6 +61,9 @@ export class Site {
 
   public styling: Styling;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public twitterAccount?: string;
 
   public constructor (site: TypeSite) {

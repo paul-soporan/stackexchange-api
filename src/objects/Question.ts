@@ -7,22 +7,42 @@ import {ShallowUser} from './ShallowUser';
 
 import {TypeQuestion} from '../result-types/TypeQuestion';
 
+/**
+ * The equivalent of [Type question](https://api.stackexchange.com/docs/types/question).<br>
+ * This object represents a Question on one of the [Stack Exchange sites](https://stackexchange.com/sites).<br>
+ * This object is heavily inspired by the Question page itself, and can optionally return [[Comment|Comments]] and [[Answer|Answers]] accordingly.
+ */
 export class Question {
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public acceptedAnswerId?: number;
 
   public answerCount: number;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public answers?: Answer[];
 
   public body?: string;
 
   public bodyMarkdown?: string;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public bountyAmount?: number;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public bountyClosesDate?: Date;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public bountyUser?: ShallowUser;
 
   public canClose?: boolean;
@@ -31,16 +51,31 @@ export class Question {
 
   public closeVoteCount?: number;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public closedDate?: Date;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public closedDetails?: ClosedDetails;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public closedReason?: string;
 
   public commentCount?: number;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public comments?: Comment[];
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public communityOwnedDate?: Date;
 
   public creationDate: Date;
@@ -59,24 +94,45 @@ export class Question {
 
   public lastActivityDate: Date;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public lastEditDate?: Date;
 
   public lastEditor?: ShallowUser;
 
   public link: string;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public lockedDate?: Date;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public migratedFrom?: MigrationInfo;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public migratedTo?: MigrationInfo;
 
   public notice?: Notice;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public owner?: ShallowUser;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public protectedDate?: Date;
 
+  /**
+   * Refers to a [[Question]]
+   */
   public questionId: number;
 
   public reopenVoteCount?: number;

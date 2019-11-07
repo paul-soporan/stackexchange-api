@@ -1,5 +1,9 @@
 import {TypeNotice} from '../result-types/TypeNotice';
 
+/**
+ * The equivalent of [Type notice](https://api.stackexchange.com/docs/types/notice).<br>
+ * Represents a Notice on a [[Post]].
+ */
 export class Notice {
 
   public body: string;

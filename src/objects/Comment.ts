@@ -2,6 +2,11 @@ import {ShallowUser} from './ShallowUser';
 
 import {TypeComment} from '../result-types/TypeComment';
 
+/**
+ * The equivalent of [Type comment](https://api.stackexchange.com/docs/types/comment).<br>
+ * All [[Question|Questions]] and [[Answer|Answers]] on a [Stack Exchange site](https://stackexchange.com/sites) can be commented on, and this object represents those Comments.<br>
+ * Comments can also be optionally directed at users, when this is the case the [[replyToUser]] property is set.
+ */
 export class Comment {
 
   public body?: string;
@@ -10,6 +15,9 @@ export class Comment {
 
   public canFlag?: boolean;
 
+  /**
+   * Refers to a [[Comment]]
+   */
   public commentId: number;
 
   public creationDate: Date;
@@ -18,12 +26,21 @@ export class Comment {
 
   public link?: string;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public owner?: ShallowUser;
 
+  /**
+   * Refers to a [[Post]]
+   */
   public postId: number;
 
   public postType?: 'question' | 'answer';
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public replyToUser?: ShallowUser;
 
   public score: number;

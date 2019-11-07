@@ -2,6 +2,10 @@ import {Site} from './Site';
 
 import {TypeInfo} from '../result-types/TypeInfo';
 
+/**
+ * The equivalent of [Type info](https://api.stackexchange.com/docs/types/info).<br>
+ * This object describes a [[Site]] in the [Stack Exchange network](https://stackexchange.com/sites).
+ */
 export class Info {
 
   public answersPerMinute: number;

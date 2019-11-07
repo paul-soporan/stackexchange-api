@@ -1,5 +1,10 @@
 import {TypeTag} from '../result-types/TypeTag';
 
+/**
+ * The equivalent of [Type tag](https://api.stackexchange.com/docs/types/tag).<br>
+ * This object represents a Tag on a [Stack Exchange site](https://stackexchange.com/sites).<br>
+ * Applications should be prepared for the destruction of Tags, though this tends to be a rare event.
+ */
 export class Tag {
 
   public count: number;
@@ -10,12 +15,18 @@ export class Tag {
 
   public isRequired: boolean;
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public lastActivityDate?: Date;
 
   public name: string;
 
   public synonyms?: string[];
 
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
   public userId?: number;
 
   public constructor (tag: TypeTag) {
