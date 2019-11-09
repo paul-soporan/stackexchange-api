@@ -10,7 +10,7 @@ import {TypeAnswer} from '../result-types/TypeAnswer';
  */
 export class Answer {
 
-  public accepted?: boolean;
+  public accepted: boolean;
 
   /**
    * Refers to an [[Answer]]
@@ -20,36 +20,36 @@ export class Answer {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public awardedBountyAmount?: number;
+  public awardedBountyAmount: number;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public awardedBountyUsers?: ShallowUser[];
+  public awardedBountyUsers: ShallowUser[];
 
-  public body?: string;
+  public body: string;
 
-  public bodyMarkdown?: string;
+  public bodyMarkdown: string;
 
-  public canFlag?: boolean;
+  public canFlag: boolean;
 
-  public commentCount?: number;
-
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public comments?: Comment[];
+  public commentCount: number;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public communityOwnedDate?: Date;
+  public comments: Comment[];
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public communityOwnedDate: Date;
 
   public creationDate: Date;
 
-  public downVoteCount?: number;
+  public downVoteCount: number;
 
-  public downvoted?: boolean;
+  public downvoted: boolean;
 
   public isAccepted: boolean;
 
@@ -58,21 +58,21 @@ export class Answer {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public lastEditDate?: Date;
+  public lastEditDate: Date;
 
-  public lastEditor?: ShallowUser;
+  public lastEditor: ShallowUser;
 
-  public link?: string;
-
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public lockedDate?: Date;
+  public link: string;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public owner?: ShallowUser;
+  public lockedDate: Date;
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public owner: ShallowUser;
 
   /**
    * Refers to a [[Question]]
@@ -81,19 +81,19 @@ export class Answer {
 
   public score: number;
 
-  public shareLink?: string;
+  public shareLink: string;
 
-  public tags?: string[];
+  public tags: string[];
 
-  public title?: string;
+  public title: string;
 
-  public upVoteCount?: number;
+  public upVoteCount: number;
 
-  public upvoted?: boolean;
+  public upvoted: boolean;
 
   public constructor (answer: TypeAnswer) {
     this.accepted = answer.accepted ?? null;
-    this.answerId = answer.answer_id;
+    this.answerId = answer.answer_id ?? null;
     this.awardedBountyAmount = answer.awarded_bounty_amount ?? null;
     if (typeof answer.awarded_bounty_users === 'undefined') {
       this.awardedBountyUsers = null;
@@ -112,11 +112,11 @@ export class Answer {
         .map((comment) => new Comment(comment));
     }
     this.communityOwnedDate = answer.community_owned_date ?? null;
-    this.creationDate = answer.creation_date;
+    this.creationDate = answer.creation_date ?? null;
     this.downVoteCount = answer.down_vote_count ?? null;
     this.downvoted = answer.downvoted ?? null;
-    this.isAccepted = answer.is_accepted;
-    this.lastActivityDate = answer.last_activity_date;
+    this.isAccepted = answer.is_accepted ?? null;
+    this.lastActivityDate = answer.last_activity_date ?? null;
     this.lastEditDate = answer.last_edit_date ?? null;
     if (typeof answer.last_editor === 'undefined') {
       this.lastEditor = null;
@@ -130,8 +130,8 @@ export class Answer {
     } else {
       this.owner = new ShallowUser(answer.owner);
     }
-    this.questionId = answer.question_id;
-    this.score = answer.score;
+    this.questionId = answer.question_id ?? null;
+    this.score = answer.score ?? null;
     this.shareLink = answer.share_link ?? null;
     this.tags = answer.tags ?? null;
     this.title = answer.title ?? null;

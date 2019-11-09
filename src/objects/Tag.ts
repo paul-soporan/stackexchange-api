@@ -18,24 +18,24 @@ export class Tag {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public lastActivityDate?: Date;
+  public lastActivityDate: Date;
 
   public name: string;
 
-  public synonyms?: string[];
+  public synonyms: string[];
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public userId?: number;
+  public userId: number;
 
   public constructor (tag: TypeTag) {
-    this.count = tag.count;
-    this.hasSynonyms = tag.has_synonyms;
-    this.isModeratorOnly = tag.is_moderator_only;
-    this.isRequired = tag.is_required;
+    this.count = tag.count ?? null;
+    this.hasSynonyms = tag.has_synonyms ?? null;
+    this.isModeratorOnly = tag.is_moderator_only ?? null;
+    this.isRequired = tag.is_required ?? null;
     this.lastActivityDate = tag.last_activity_date ?? null;
-    this.name = tag.name;
+    this.name = tag.name ?? null;
     this.synonyms = tag.synonyms ?? null;
     this.userId = tag.user_id ?? null;
   }

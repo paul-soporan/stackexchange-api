@@ -8,5 +8,5 @@ export interface TypeShallowUser {
   profile_image?: string;
   reputation?: number;
   user_id?: number;
-  user_type: 'unregistered' | 'registered' | 'moderator' | 'team_admin' | 'does_not_exist';
+  user_type?: 'unregistered' | 'registered' | 'moderator' | 'team_admin' | 'does_not_exist';
 }

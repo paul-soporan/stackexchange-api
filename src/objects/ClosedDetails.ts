@@ -19,7 +19,7 @@ export class ClosedDetails {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public originalQuestions?: OriginalQuestion[];
+  public originalQuestions: OriginalQuestion[];
 
   public reason: string;
 
@@ -30,14 +30,14 @@ export class ClosedDetails {
       this.byUsers = closed_details.by_users
         .map((shallow_user) => new ShallowUser(shallow_user));
     }
-    this.description = closed_details.description;
-    this.onHold = closed_details.on_hold;
+    this.description = closed_details.description ?? null;
+    this.onHold = closed_details.on_hold ?? null;
     if (typeof closed_details.original_questions === 'undefined') {
       this.originalQuestions = null;
     } else {
       this.originalQuestions = closed_details.original_questions
         .map((original_question) => new OriginalQuestion(original_question));
     }
-    this.reason = closed_details.reason;
+    this.reason = closed_details.reason ?? null;
   }
 }

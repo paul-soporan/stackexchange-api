@@ -1,5 +1,5 @@
 export interface TypePrivilege {
-  description: string;
-  reputation: number;
-  short_description: string;
+  description?: string;
+  reputation?: number;
+  short_description?: string;
 }

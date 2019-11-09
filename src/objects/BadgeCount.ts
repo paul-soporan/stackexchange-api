@@ -13,8 +13,8 @@ export class BadgeCount {
   public silver: number;
 
   public constructor (badge_count: TypeBadgeCount) {
-    this.bronze = badge_count.bronze;
-    this.gold = badge_count.gold;
-    this.silver = badge_count.silver;
+    this.bronze = badge_count.bronze ?? null;
+    this.gold = badge_count.gold ?? null;
+    this.silver = badge_count.silver ?? null;
   }
 }

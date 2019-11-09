@@ -12,8 +12,8 @@ export interface TypeWrapper {
   error_id?: number;
   error_message?: string;
   error_name?: string;
-  has_more: boolean;
-  items:
+  has_more?: boolean;
+  items?:
     | TypeAnswer[]
     | TypeBadge[]
     | TypeComment[]
@@ -24,8 +24,8 @@ export interface TypeWrapper {
     | TypeTag[];
   page?: number;
   page_size?: number;
-  quota_max: number;
-  quota_remaining: number;
+  quota_max?: number;
+  quota_remaining?: number;
   total?: number;
   type?: string;
 }

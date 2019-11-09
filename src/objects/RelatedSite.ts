@@ -9,7 +9,7 @@ export class RelatedSite {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public apiSiteParameter?: string;
+  public apiSiteParameter: string;
 
   public name: string;
 
@@ -19,8 +19,8 @@ export class RelatedSite {
 
   public constructor (related_site: TypeRelatedSite) {
     this.apiSiteParameter = related_site.api_site_parameter ?? null;
-    this.name = related_site.name;
-    this.relation = related_site.relation;
-    this.siteUrl = related_site.site_url;
+    this.name = related_site.name ?? null;
+    this.relation = related_site.relation ?? null;
+    this.siteUrl = related_site.site_url ?? null;
   }
 }

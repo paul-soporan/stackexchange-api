@@ -12,40 +12,44 @@ export class ShallowUser {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public acceptRate?: number;
+  public acceptRate: number;
 
-  public badgeCounts?: BadgeCount;
-
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public displayName?: string;
+  public badgeCounts: BadgeCount;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public link?: string;
+  public displayName: string;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public profileImage?: string;
+  public link: string;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public reputation?: number;
+  public profileImage: string;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public userId?: number;
+  public reputation: number;
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public userId: number;
 
   public userType: 'unregistered' | 'registered' | 'moderator' | 'team_admin' | 'does_not_exist';
 
   public constructor (shallow_user: TypeShallowUser) {
     this.acceptRate = shallow_user.accept_rate ?? null;
-    this.badgeCounts = shallow_user.badge_counts ?? null;
+    if (typeof shallow_user.badge_counts === 'undefined') {
+      this.badgeCounts = null;
+    } else {
+      this.badgeCounts = new BadgeCount(shallow_user.badge_counts);
+    }
     this.displayName = shallow_user.display_name ?? null;
     this.link = shallow_user.link ?? null;
     this.profileImage = shallow_user.profile_image ?? null;

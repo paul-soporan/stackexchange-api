@@ -10,7 +10,7 @@ export class OriginalQuestion {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public acceptedAnswerId?: number;
+  public acceptedAnswerId: number;
 
   public answerCount: number;
 
@@ -23,8 +23,8 @@ export class OriginalQuestion {
 
   public constructor (original_question: TypeOriginalQuestion) {
     this.acceptedAnswerId = original_question.accepted_answer_id ?? null;
-    this.answerCount = original_question.answer_count;
-    this.questionId = original_question.question_id;
-    this.title = original_question.title;
+    this.answerCount = original_question.answer_count ?? null;
+    this.questionId = original_question.question_id ?? null;
+    this.title = original_question.title ?? null;
   }
 }

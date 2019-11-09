@@ -14,8 +14,8 @@ export class Privilege {
   public shortDescription: string;
 
   public constructor (privilege: TypePrivilege) {
-    this.description = privilege.description;
-    this.reputation = privilege.reputation;
-    this.shortDescription = privilege.short_description;
+    this.description = privilege.description ?? null;
+    this.reputation = privilege.reputation ?? null;
+    this.shortDescription = privilege.short_description ?? null;
   }
 }

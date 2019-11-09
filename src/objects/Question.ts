@@ -17,78 +17,78 @@ export class Question {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public acceptedAnswerId?: number;
+  public acceptedAnswerId: number;
 
   public answerCount: number;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public answers?: Answer[];
+  public answers: Answer[];
 
-  public body?: string;
+  public body: string;
 
-  public bodyMarkdown?: string;
-
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public bountyAmount?: number;
+  public bodyMarkdown: string;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public bountyClosesDate?: Date;
+  public bountyAmount: number;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public bountyUser?: ShallowUser;
-
-  public canClose?: boolean;
-
-  public canFlag?: boolean;
-
-  public closeVoteCount?: number;
+  public bountyClosesDate: Date;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public closedDate?: Date;
+  public bountyUser: ShallowUser;
+
+  public canClose: boolean;
+
+  public canFlag: boolean;
+
+  public closeVoteCount: number;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public closedDetails?: ClosedDetails;
+  public closedDate: Date;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public closedReason?: string;
-
-  public commentCount?: number;
+  public closedDetails: ClosedDetails;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public comments?: Comment[];
+  public closedReason: string;
+
+  public commentCount: number;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public communityOwnedDate?: Date;
+  public comments: Comment[];
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public communityOwnedDate: Date;
 
   public creationDate: Date;
 
-  public deleteVoteCount?: number;
+  public deleteVoteCount: number;
 
-  public downVoteCount?: number;
+  public downVoteCount: number;
 
-  public downvoted?: boolean;
+  public downvoted: boolean;
 
-  public favoriteCount?: number;
+  public favoriteCount: number;
 
-  public favorited?: boolean;
+  public favorited: boolean;
 
   public isAnswered: boolean;
 
@@ -97,63 +97,63 @@ export class Question {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public lastEditDate?: Date;
+  public lastEditDate: Date;
 
-  public lastEditor?: ShallowUser;
+  public lastEditor: ShallowUser;
 
   public link: string;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public lockedDate?: Date;
+  public lockedDate: Date;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public migratedFrom?: MigrationInfo;
+  public migratedFrom: MigrationInfo;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public migratedTo?: MigrationInfo;
+  public migratedTo: MigrationInfo;
 
-  public notice?: Notice;
-
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public owner?: ShallowUser;
+  public notice: Notice;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public protectedDate?: Date;
+  public owner: ShallowUser;
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public protectedDate: Date;
 
   /**
    * Refers to a [[Question]]
    */
   public questionId: number;
 
-  public reopenVoteCount?: number;
+  public reopenVoteCount: number;
 
   public score: number;
 
-  public shareLink?: string;
+  public shareLink: string;
 
   public tags: string[];
 
   public title: string;
 
-  public upVoteCount?: number;
+  public upVoteCount: number;
 
-  public upvoted?: boolean;
+  public upvoted: boolean;
 
   public viewCount: number;
 
   public constructor (question: TypeQuestion) {
     this.acceptedAnswerId = question.accepted_answer_id ?? null;
-    this.answerCount = question.answer_count;
+    this.answerCount = question.answer_count ?? null;
     if (typeof question.answers === 'undefined') {
       this.answers = null;
     } else {
@@ -187,21 +187,21 @@ export class Question {
         .map((comment): Comment => new Comment(comment));
     }
     this.communityOwnedDate = question.community_owned_date ?? null;
-    this.creationDate = question.creation_date;
+    this.creationDate = question.creation_date ?? null;
     this.deleteVoteCount = question.delete_vote_count ?? null;
     this.downVoteCount = question.down_vote_count ?? null;
     this.downvoted = question.downvoted ?? null;
     this.favoriteCount = question.favorite_count ?? null;
     this.favorited = question.favorited ?? null;
-    this.isAnswered = question.is_answered;
-    this.lastActivityDate = question.last_activity_date;
+    this.isAnswered = question.is_answered ?? null;
+    this.lastActivityDate = question.last_activity_date ?? null;
     this.lastEditDate = question.last_edit_date ?? null;
     if (typeof question.last_editor === 'undefined') {
       this.lastEditor = null;
     } else {
       this.lastEditor = new ShallowUser(question.last_editor);
     }
-    this.link = question.link;
+    this.link = question.link ?? null;
     this.lockedDate = question.locked_date ?? null;
     if (typeof question.migrated_from === 'undefined') {
       this.migratedFrom = null;
@@ -224,14 +224,14 @@ export class Question {
       this.owner = new ShallowUser(question.owner);
     }
     this.protectedDate = question.protected_date ?? null;
-    this.questionId = question.question_id;
+    this.questionId = question.question_id ?? null;
     this.reopenVoteCount = question.reopen_vote_count ?? null;
-    this.score = question.score;
+    this.score = question.score ?? null;
     this.shareLink = question.share_link ?? null;
-    this.tags = question.tags;
-    this.title = question.title;
+    this.tags = question.tags ?? null;
+    this.title = question.title ?? null;
     this.upVoteCount = question.up_vote_count ?? null;
     this.upvoted = question.upvoted ?? null;
-    this.viewCount = question.view_count;
+    this.viewCount = question.view_count ?? null;
   }
 }

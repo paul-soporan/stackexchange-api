@@ -7,7 +7,7 @@ import {TypeShallowUser} from './TypeShallowUser';
 
 export interface TypeQuestion {
   accepted_answer_id?: number;
-  answer_count: number;
+  answer_count?: number;
   answers?: TypeAnswer[];
   body?: string;
   body_markdown?: string;
@@ -23,30 +23,30 @@ export interface TypeQuestion {
   comment_count?: number;
   comments?: TypeComment[];
   community_owned_date?: Date;
-  creation_date: Date;
+  creation_date?: Date;
   delete_vote_count?: number;
   down_vote_count?: number;
   downvoted?: boolean;
   favorite_count?: number;
   favorited?: boolean;
-  is_answered: boolean;
-  last_activity_date: Date;
+  is_answered?: boolean;
+  last_activity_date?: Date;
   last_edit_date?: Date;
   last_editor?: TypeShallowUser;
-  link: string;
+  link?: string;
   locked_date?: Date;
   migrated_from?: TypeMigrationInfo;
   migrated_to?: TypeMigrationInfo;
   notice?: TypeNotice;
   owner?: TypeShallowUser;
   protected_date?: Date;
-  question_id: number;
+  question_id?: number;
   reopen_vote_count?: number;
-  score: number;
+  score?: number;
   share_link?: string;
-  tags: string[];
-  title: string;
+  tags?: string[];
+  title?: string;
   up_vote_count?: number;
   upvoted?: boolean;
-  view_count: number;
+  view_count?: number;
 }

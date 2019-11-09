@@ -18,8 +18,12 @@ export class MigrationInfo {
   public questionId: number;
 
   public constructor (migration_info: TypeMigrationInfo) {
-    this.onDate = migration_info.on_date;
-    this.otherSite = new Site(migration_info.other_site);
-    this.questionId = migration_info.question_id;
+    this.onDate = migration_info.on_date ?? null;
+    if (typeof migration_info.other_site === 'undefined') {
+      this.otherSite = null;
+    } else {
+      this.otherSite = new Site(migration_info.other_site);
+    }
+    this.questionId = migration_info.question_id ?? null;
   }
 }

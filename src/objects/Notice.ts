@@ -13,8 +13,8 @@ export class Notice {
   public ownerUserId: number;
 
   public constructor (notice: TypeNotice) {
-    this.body = notice.body;
-    this.creationDate = notice.creation_date;
-    this.ownerUserId = notice.owner_user_id;
+    this.body = notice.body ?? null;
+    this.creationDate = notice.creation_date ?? null;
+    this.ownerUserId = notice.owner_user_id ?? null;
   }
 }

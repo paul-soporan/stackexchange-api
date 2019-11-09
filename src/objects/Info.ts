@@ -18,7 +18,7 @@ export class Info {
 
   public questionsPerMinute: number;
 
-  public site?: Site;
+  public site: Site;
 
   public totalAccepted: number;
 
@@ -37,23 +37,23 @@ export class Info {
   public totalVotes: number;
 
   public constructor (info: TypeInfo) {
-    this.answersPerMinute = info.answers_per_minute;
-    this.apiRevision = info.api_revision;
-    this.badgesPerMinute = info.badges_per_minute;
-    this.newActiveUsers = info.new_active_users;
-    this.questionsPerMinute = info.questions_per_minute;
+    this.answersPerMinute = info.answers_per_minute ?? null;
+    this.apiRevision = info.api_revision ?? null;
+    this.badgesPerMinute = info.badges_per_minute ?? null;
+    this.newActiveUsers = info.new_active_users ?? null;
+    this.questionsPerMinute = info.questions_per_minute ?? null;
     if (typeof info.site === 'undefined') {
       this.site = null;
     } else {
       this.site = new Site(info.site);
     }
-    this.totalAccepted = info.total_accepted;
-    this.totalAnswers = info.total_answers;
-    this.totalBadges = info.total_badges;
-    this.totalComments = info.total_comments;
-    this.totalQuestions = info.total_questions;
-    this.totalUnanswered = info.total_unanswered;
-    this.totalUsers = info.total_users;
-    this.totalVotes = info.total_votes;
+    this.totalAccepted = info.total_accepted ?? null;
+    this.totalAnswers = info.total_answers ?? null;
+    this.totalBadges = info.total_badges ?? null;
+    this.totalComments = info.total_comments ?? null;
+    this.totalQuestions = info.total_questions ?? null;
+    this.totalUnanswered = info.total_unanswered ?? null;
+    this.totalUsers = info.total_users ?? null;
+    this.totalVotes = info.total_votes ?? null;
   }
 }

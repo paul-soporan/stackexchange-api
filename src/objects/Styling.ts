@@ -16,8 +16,8 @@ export class Styling {
   public tagForegroundColor: string;
 
   public constructor (styling: TypeStyling) {
-    this.linkColor = styling.link_color;
-    this.tagBackgroundColor = styling.tag_background_color;
-    this.tagForegroundColor = styling.tag_foreground_color;
+    this.linkColor = styling.link_color ?? null;
+    this.tagBackgroundColor = styling.tag_background_color ?? null;
+    this.tagForegroundColor = styling.tag_foreground_color ?? null;
   }
 }
