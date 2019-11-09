@@ -7,6 +7,7 @@ import {Info as _Info} from './objects/Info';
 import {MigrationInfo as _MigrationInfo} from './objects/MigrationInfo';
 import {Notice as _Notice} from './objects/Notice';
 import {OriginalQuestion as _OriginalQuestion} from './objects/OriginalQuestion';
+import {Post as _Post} from './objects/Post';
 import {Privilege as _Privilege} from './objects/Privilege';
 import {Question as _Question} from './objects/Question';
 import {RelatedSite as _RelatedSite} from './objects/RelatedSite';
@@ -27,6 +28,7 @@ export {
   _MigrationInfo as MigrationInfo,
   _Notice as Notice,
   _OriginalQuestion as OriginalQuestion,
+  _Post as Post,
   _Privilege as Privilege,
   _Question as Question,
   _RelatedSite as RelatedSite,

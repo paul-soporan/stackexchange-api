@@ -1,6 +1,6 @@
 import * as rp from 'request-promise';
 
-import {Wrapper} from '../objects/Wrapper';
+import {Wrapper} from './Wrapper';
 
 import {Answer} from './Answer';
 import {Badge} from './Badge';
