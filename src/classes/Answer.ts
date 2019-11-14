@@ -10,86 +10,86 @@ import {TypeAnswer} from '../interfaces/result-types/TypeAnswer';
  */
 export class Answer {
 
-  public accepted: boolean;
+  public accepted: boolean | null;
 
   /**
    * Refers to an [[Answer]]
    */
-  public answerId: number;
+  public answerId: number | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public awardedBountyAmount: number;
+  public awardedBountyAmount: number | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public awardedBountyUsers: ShallowUser[];
+  public awardedBountyUsers: ShallowUser[] | null;
 
-  public body: string;
+  public body: string | null;
 
-  public bodyMarkdown: string;
+  public bodyMarkdown: string | null;
 
-  public canFlag: boolean;
+  public canFlag: boolean | null;
 
-  public commentCount: number;
-
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public comments: Comment[];
+  public commentCount: number | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public communityOwnedDate: Date;
-
-  public creationDate: Date;
-
-  public downVoteCount: number;
-
-  public downvoted: boolean;
-
-  public isAccepted: boolean;
-
-  public lastActivityDate: Date;
+  public comments: Comment[] | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public lastEditDate: Date;
+  public communityOwnedDate: Date | null;
 
-  public lastEditor: ShallowUser;
+  public creationDate: Date | null;
 
-  public link: string;
+  public downVoteCount: number | null;
+
+  public downvoted: boolean | null;
+
+  public isAccepted: boolean | null;
+
+  public lastActivityDate: Date | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public lockedDate: Date;
+  public lastEditDate: Date | null;
+
+  public lastEditor: ShallowUser | null;
+
+  public link: string | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public owner: ShallowUser;
+  public lockedDate: Date | null;
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public owner: ShallowUser | null;
 
   /**
    * Refers to a [[Question]]
    */
-  public questionId: number;
+  public questionId: number | null;
 
-  public score: number;
+  public score: number | null;
 
-  public shareLink: string;
+  public shareLink: string | null;
 
-  public tags: string[];
+  public tags: string[] | null;
 
-  public title: string;
+  public title: string | null;
 
-  public upVoteCount: number;
+  public upVoteCount: number | null;
 
-  public upvoted: boolean;
+  public upvoted: boolean | null;
 
   public constructor (answer?: TypeAnswer) {
     this.accepted = answer?.accepted ?? null;

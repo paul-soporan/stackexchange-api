@@ -10,18 +10,18 @@ import {TypeClosedDetails} from '../interfaces/result-types/TypeClosedDetails';
  */
 export class ClosedDetails {
 
-  public byUsers: ShallowUser[];
+  public byUsers: ShallowUser[] | null;
 
-  public description: string;
+  public description: string | null;
 
-  public onHold: boolean;
+  public onHold: boolean | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public originalQuestions: OriginalQuestion[];
+  public originalQuestions: OriginalQuestion[] | null;
 
-  public reason: string;
+  public reason: string | null;
 
   public constructor (closed_details?: TypeClosedDetails) {
     if (typeof closed_details?.by_users === 'undefined') {

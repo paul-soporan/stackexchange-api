@@ -12,36 +12,36 @@ export class ShallowUser {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public acceptRate: number;
+  public acceptRate: number | null;
 
-  public badgeCounts: BadgeCount;
-
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public displayName: string;
+  public badgeCounts: BadgeCount | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public link: string;
+  public displayName: string | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public profileImage: string;
+  public link: string | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public reputation: number;
+  public profileImage: string | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public userId: number;
+  public reputation: number | null;
 
-  public userType: 'unregistered' | 'registered' | 'moderator' | 'team_admin' | 'does_not_exist';
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public userId: number | null;
+
+  public userType: 'unregistered' | 'registered' | 'moderator' | 'team_admin' | 'does_not_exist' | null;
 
   public constructor (shallow_user?: TypeShallowUser) {
     this.acceptRate = shallow_user?.accept_rate ?? null;

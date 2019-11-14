@@ -10,27 +10,27 @@ import {TypeBadge} from '../interfaces/result-types/TypeBadge';
  */
 export class Badge {
 
-  public awardCount: number;
+  public awardCount: number | null;
 
   /**
    * Refers to a [[Badge]]
    */
-  public badgeId: number;
+  public badgeId: number | null;
 
-  public badgeType: 'named' | 'tag_based';
+  public badgeType: 'named' | 'tag_based' | null;
 
-  public description: string;
+  public description: string | null;
 
-  public link: string;
+  public link: string | null;
 
-  public name: string;
+  public name: string | null;
 
-  public rank: 'gold' | 'silver' | 'bronze';
+  public rank: 'gold' | 'silver' | 'bronze' | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public user: ShallowUser;
+  public user: ShallowUser | null;
 
   public constructor (badge?: TypeBadge) {
     this.awardCount = badge?.award_count ?? null;

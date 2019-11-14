@@ -8,14 +8,14 @@ import {TypeMigrationInfo} from '../interfaces/result-types/TypeMigrationInfo';
  */
 export class MigrationInfo {
 
-  public onDate: Date;
+  public onDate: Date | null;
 
-  public otherSite: Site;
+  public otherSite: Site | null;
 
   /**
    * Refers to a [[Question]]
    */
-  public questionId: number;
+  public questionId: number | null;
 
   public constructor (migration_info?: TypeMigrationInfo) {
     this.onDate = migration_info?.on_date ?? null;

@@ -7,11 +7,11 @@ import {TypePrivilege} from '../interfaces/result-types/TypePrivilege';
  */
 export class Privilege {
 
-  public description: string;
+  public description: string | null;
 
-  public reputation: number;
+  public reputation: number | null;
 
-  public shortDescription: string;
+  public shortDescription: string | null;
 
   public constructor (privilege?: TypePrivilege) {
     this.description = privilege?.description ?? null;

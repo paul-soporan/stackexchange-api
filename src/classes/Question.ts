@@ -17,139 +17,139 @@ export class Question {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public acceptedAnswerId: number;
+  public acceptedAnswerId: number | null;
 
-  public answerCount: number;
-
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public answers: Answer[];
-
-  public body: string;
-
-  public bodyMarkdown: string;
+  public answerCount: number | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public bountyAmount: number;
+  public answers: Answer[] | null;
+
+  public body: string | null;
+
+  public bodyMarkdown: string | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public bountyClosesDate: Date;
+  public bountyAmount: number | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public bountyUser: ShallowUser;
-
-  public canClose: boolean;
-
-  public canFlag: boolean;
-
-  public closeVoteCount: number;
+  public bountyClosesDate: Date | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public closedDate: Date;
+  public bountyUser: ShallowUser | null;
+
+  public canClose: boolean | null;
+
+  public canFlag: boolean | null;
+
+  public closeVoteCount: number | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public closedDetails: ClosedDetails;
+  public closedDate: Date | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public closedReason: string;
-
-  public commentCount: number;
+  public closedDetails: ClosedDetails | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public comments: Comment[];
+  public closedReason: string | null;
+
+  public commentCount: number | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public communityOwnedDate: Date;
-
-  public creationDate: Date;
-
-  public deleteVoteCount: number;
-
-  public downVoteCount: number;
-
-  public downvoted: boolean;
-
-  public favoriteCount: number;
-
-  public favorited: boolean;
-
-  public isAnswered: boolean;
-
-  public lastActivityDate: Date;
+  public comments: Comment[] | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public lastEditDate: Date;
+  public communityOwnedDate: Date | null;
 
-  public lastEditor: ShallowUser;
+  public creationDate: Date | null;
 
-  public link: string;
+  public deleteVoteCount: number | null;
 
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public lockedDate: Date;
+  public downVoteCount: number | null;
 
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public migratedFrom: MigrationInfo;
+  public downvoted: boolean | null;
 
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public migratedTo: MigrationInfo;
+  public favoriteCount: number | null;
 
-  public notice: Notice;
+  public favorited: boolean | null;
+
+  public isAnswered: boolean | null;
+
+  public lastActivityDate: Date | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public owner: ShallowUser;
+  public lastEditDate: Date | null;
+
+  public lastEditor: ShallowUser | null;
+
+  public link: string | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public protectedDate: Date;
+  public lockedDate: Date | null;
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public migratedFrom: MigrationInfo | null;
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public migratedTo: MigrationInfo | null;
+
+  public notice: Notice | null;
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public owner: ShallowUser | null;
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public protectedDate: Date | null;
 
   /**
    * Refers to a [[Question]]
    */
-  public questionId: number;
+  public questionId: number | null;
 
-  public reopenVoteCount: number;
+  public reopenVoteCount: number | null;
 
-  public score: number;
+  public score: number | null;
 
-  public shareLink: string;
+  public shareLink: string | null;
 
-  public tags: string[];
+  public tags: string[] | null;
 
-  public title: string;
+  public title: string | null;
 
-  public upVoteCount: number;
+  public upVoteCount: number | null;
 
-  public upvoted: boolean;
+  public upvoted: boolean | null;
 
-  public viewCount: number;
+  public viewCount: number | null;
 
   public constructor (question?: TypeQuestion) {
     this.acceptedAnswerId = question?.accepted_answer_id ?? null;

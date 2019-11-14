@@ -7,27 +7,27 @@ import {TypeTag} from '../interfaces/result-types/TypeTag';
  */
 export class Tag {
 
-  public count: number;
+  public count: number | null;
 
-  public hasSynonyms: boolean;
+  public hasSynonyms: boolean | null;
 
-  public isModeratorOnly: boolean;
+  public isModeratorOnly: boolean | null;
 
-  public isRequired: boolean;
-
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public lastActivityDate: Date;
-
-  public name: string;
-
-  public synonyms: string[];
+  public isRequired: boolean | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public userId: number;
+  public lastActivityDate: Date | null;
+
+  public name: string | null;
+
+  public synonyms: string[] | null;
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public userId: number | null;
 
   public constructor (tag?: TypeTag) {
     this.count = tag?.count ?? null;

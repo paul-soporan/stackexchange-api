@@ -9,13 +9,13 @@ export class RelatedSite {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public apiSiteParameter: string;
+  public apiSiteParameter: string | null;
 
-  public name: string;
+  public name: string | null;
 
-  public relation: 'parent' | 'meta' | 'chat';
+  public relation: 'parent' | 'meta' | 'chat' | null;
 
-  public siteUrl: string;
+  public siteUrl: string | null;
 
   public constructor (related_site?: TypeRelatedSite) {
     this.apiSiteParameter = related_site?.api_site_parameter ?? null;

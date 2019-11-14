@@ -8,33 +8,33 @@ import {TypeInfo} from '../interfaces/result-types/TypeInfo';
  */
 export class Info {
 
-  public answersPerMinute: number;
+  public answersPerMinute: number | null;
 
-  public apiRevision: string;
+  public apiRevision: string | null;
 
-  public badgesPerMinute: number;
+  public badgesPerMinute: number | null;
 
-  public newActiveUsers: number;
+  public newActiveUsers: number | null;
 
-  public questionsPerMinute: number;
+  public questionsPerMinute: number | null;
 
-  public site: Site;
+  public site: Site | null;
 
-  public totalAccepted: number;
+  public totalAccepted: number | null;
 
-  public totalAnswers: number;
+  public totalAnswers: number | null;
 
-  public totalBadges: number;
+  public totalBadges: number | null;
 
-  public totalComments: number;
+  public totalComments: number | null;
 
-  public totalQuestions: number;
+  public totalQuestions: number | null;
 
-  public totalUnanswered: number;
+  public totalUnanswered: number | null;
 
-  public totalUsers: number;
+  public totalUsers: number | null;
 
-  public totalVotes: number;
+  public totalVotes: number | null;
 
   public constructor (info?: TypeInfo) {
     this.answersPerMinute = info?.answers_per_minute ?? null;

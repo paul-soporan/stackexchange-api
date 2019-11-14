@@ -44,39 +44,39 @@ export class Wrapper<
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public backoff: number;
+  public backoff: number | null;
 
   /**
    * Refers to an [[Error]]<br>
    * *May be absent, in which case it is set to `null`*
    */
-  public errorId: number;
+  public errorId: number | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public errorMessage: string;
+  public errorMessage: string | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public errorName: string;
+  public errorName: string | null;
 
-  public hasMore: boolean;
+  public hasMore: boolean | null;
 
-  public items: T[];
+  public items: T[] | null;
 
-  public page: number;
+  public page: number | null;
 
-  public pageSize: number;
+  public pageSize: number | null;
 
-  public quotaMax: number;
+  public quotaMax: number | null;
 
-  public quotaRemaining: number;
+  public quotaRemaining: number | null;
 
-  public total: number;
+  public total: number | null;
 
-  public type: string;
+  public type: string | null;
 
   public constructor (wrapper?: TypeWrapper, classType?: ClassType) {
     this.backoff = wrapper?.backoff ?? null;
@@ -91,47 +91,47 @@ export class Wrapper<
         case 'Answer':
           this.items
             = [...wrapper.items]
-              .map((item: TypeAnswer) => new Answer(item)) as T[];
+              .map((item) => new Answer(item as TypeAnswer)) as T[];
           break;
         case 'Badge':
           this.items
             = [...wrapper.items]
-              .map((item: TypeBadge) => new Badge(item)) as T[];
+              .map((item) => new Badge(item as TypeBadge)) as T[];
           break;
         case 'Comment':
           this.items
             = [...wrapper.items]
-              .map((item: TypeComment) => new Comment(item)) as T[];
+              .map((item) => new Comment(item as TypeComment)) as T[];
           break;
         case 'Filter':
           this.items
             = [...wrapper.items]
-              .map((item: TypeFilter) => new Filter(item)) as T[];
+              .map((item) => new Filter(item as TypeFilter)) as T[];
           break;
         case 'Info':
           this.items
             = [...wrapper.items]
-              .map((item: TypeInfo) => new Info(item)) as T[];
+              .map((item) => new Info(item as TypeInfo)) as T[];
           break;
         case 'Privilege':
           this.items
             = [...wrapper.items]
-              .map((item: TypePrivilege) => new Privilege(item)) as T[];
+              .map((item) => new Privilege(item as TypePrivilege)) as T[];
           break;
         case 'Question':
           this.items
             = [...wrapper.items]
-              .map((item: TypeQuestion) => new Question(item)) as T[];
+              .map((item) => new Question(item as TypeQuestion)) as T[];
           break;
         case 'Site':
           this.items
             = [...wrapper.items]
-              .map((item: TypeSite) => new Site(item)) as T[];
+              .map((item) => new Site(item as TypeSite)) as T[];
           break;
         case 'Tag':
           this.items
             = [...wrapper.items]
-              .map((item: TypeTag) => new Tag(item)) as T[];
+              .map((item) => new Tag(item as TypeTag)) as T[];
           break;
         default:
           this.items = null;

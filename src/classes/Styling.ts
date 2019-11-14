@@ -9,11 +9,11 @@ import {TypeStyling} from '../interfaces/result-types/TypeStyling';
  */
 export class Styling {
 
-  public linkColor: string;
+  public linkColor: string | null;
 
-  public tagBackgroundColor: string;
+  public tagBackgroundColor: string | null;
 
-  public tagForegroundColor: string;
+  public tagForegroundColor: string | null;
 
   public constructor (styling?: TypeStyling) {
     this.linkColor = styling?.link_color ?? null;

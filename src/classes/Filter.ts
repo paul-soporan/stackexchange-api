@@ -4,11 +4,11 @@ import {TypeFilter} from '../interfaces/result-types/TypeFilter';
 
 export class Filter {
 
-  public filter: string;
+  public filter: string | null;
 
-  public filterType: 'safe' | 'unsafe' | 'invalid';
+  public filterType: 'safe' | 'unsafe' | 'invalid' | null;
 
-  public includedFields: Field[];
+  public includedFields: Field[] | null;
 
   public constructor (filter?: TypeFilter) {
     this.filter = filter?.filter ?? null;

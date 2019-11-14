@@ -10,16 +10,16 @@ export class OriginalQuestion {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public acceptedAnswerId: number;
+  public acceptedAnswerId: number | null;
 
-  public answerCount: number;
+  public answerCount: number | null;
 
   /**
    * Refers to a [[Question]]
    */
-  public questionId: number;
+  public questionId: number | null;
 
-  public title: string;
+  public title: string | null;
 
   public constructor (original_question?: TypeOriginalQuestion) {
     this.acceptedAnswerId = original_question?.accepted_answer_id ?? null;

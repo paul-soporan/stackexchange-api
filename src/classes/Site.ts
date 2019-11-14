@@ -12,59 +12,59 @@ export class Site {
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public aliases: string[];
+  public aliases: string[] | null;
 
-  public apiSiteParameter: string;
+  public apiSiteParameter: string | null;
 
-  public audience: string;
-
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public closedBetaDate: Date;
-
-  public faviconUrl: string;
+  public audience: string | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public highResolutionIconUrl: string;
+  public closedBetaDate: Date | null;
 
-  public iconUrl: string;
-
-  public launchDate: Date;
-
-  public logoUrl: string;
+  public faviconUrl: string | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public markdownExtensions: Array<'MathJax' | 'Prettify' | 'Balsamiq' | 'jTab'>;
+  public highResolutionIconUrl: string | null;
 
-  public name: string;
+  public iconUrl: string | null;
 
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public openBetaDate: Date;
+  public launchDate: Date | null;
 
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public relatedSites: RelatedSite[];
-
-  public siteState: 'normal' | 'closed_beta' | 'open_beta' | 'linked_meta';
-
-  public siteType: 'main_site' | 'meta_site';
-
-  public siteUrl: string;
-
-  public styling: Styling;
+  public logoUrl: string | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public twitterAccount: string;
+  public markdownExtensions: Array<'MathJax' | 'Prettify' | 'Balsamiq' | 'jTab'> | null;
+
+  public name: string | null | null;
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public openBetaDate: Date | null;
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public relatedSites: RelatedSite[] | null;
+
+  public siteState: 'normal' | 'closed_beta' | 'open_beta' | 'linked_meta' | null;
+
+  public siteType: 'main_site' | 'meta_site' | null;
+
+  public siteUrl: string | null;
+
+  public styling: Styling | null;
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public twitterAccount: string | null;
 
   public constructor (site?: TypeSite) {
     this.aliases = site?.aliases ?? null;

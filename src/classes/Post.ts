@@ -10,55 +10,55 @@ import {TypePost} from '../interfaces/result-types/TypePost';
  */
 export class Post {
 
-  public body: string;
+  public body: string | null;
 
-  public bodyMarkdown: string;
+  public bodyMarkdown: string | null;
 
-  public commentCount: number;
-
-  /**
-   * *May be absent, in which case it is set to `null`*
-   */
-  public comments: Comment[];
-
-  public creationDate: Date;
-
-  public downVoteCount: number;
-
-  public downvoted: boolean;
-
-  public lastActivityDate: Date;
+  public commentCount: number | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public lastEditDate: Date;
+  public comments: Comment[] | null;
 
-  public lastEditor: ShallowUser;
+  public creationDate: Date | null;
 
-  public link: string;
+  public downVoteCount: number | null;
+
+  public downvoted: boolean | null;
+
+  public lastActivityDate: Date | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public owner: ShallowUser;
+  public lastEditDate: Date | null;
+
+  public lastEditor: ShallowUser | null;
+
+  public link: string | null;
+
+  /**
+   * *May be absent, in which case it is set to `null`*
+   */
+  public owner: ShallowUser | null;
 
   /**
    * Refers to a [[Post]]
    */
-  public postId: number;
+  public postId: number | null;
 
-  public postType: 'question' | 'answer';
+  public postType: 'question' | 'answer' | null;
 
-  public score: number;
+  public score: number | null;
 
-  public shareLink: string;
+  public shareLink: string | null;
 
-  public title: string;
+  public title: string | null;
 
-  public upVoteCount: number;
+  public upVoteCount: number | null;
 
-  public upvoted: boolean;
+  public upvoted: boolean | null;
 
   public constructor (post?: TypePost) {
     this.body = post?.body ?? null;

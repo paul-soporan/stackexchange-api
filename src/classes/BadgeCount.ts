@@ -6,11 +6,11 @@ import {TypeBadgeCount} from '../interfaces/result-types/TypeBadgeCount';
  */
 export class BadgeCount {
 
-  public bronze: number;
+  public bronze: number | null;
 
-  public gold: number;
+  public gold: number | null;
 
-  public silver: number;
+  public silver: number | null;
 
   public constructor (badge_count?: TypeBadgeCount) {
     this.bronze = badge_count?.bronze ?? null;

@@ -6,11 +6,11 @@ import {TypeNotice} from '../interfaces/result-types/TypeNotice';
  */
 export class Notice {
 
-  public body: string;
+  public body: string | null;
 
-  public creationDate: Date;
+  public creationDate: Date | null;
 
-  public ownerUserId: number;
+  public ownerUserId: number | null;
 
   public constructor (notice?: TypeNotice) {
     this.body = notice?.body ?? null;

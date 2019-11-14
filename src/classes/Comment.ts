@@ -9,43 +9,43 @@ import {TypeComment} from '../interfaces/result-types/TypeComment';
  */
 export class Comment {
 
-  public body: string;
+  public body: string | null;
 
-  public bodyMarkdown: string;
+  public bodyMarkdown: string | null;
 
-  public canFlag: boolean;
+  public canFlag: boolean | null;
 
   /**
    * Refers to a [[Comment]]
    */
-  public commentId: number;
+  public commentId: number | null;
 
-  public creationDate: Date;
+  public creationDate: Date | null;
 
-  public edited: boolean;
+  public edited: boolean | null;
 
-  public link: string;
+  public link: string | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public owner: ShallowUser;
+  public owner: ShallowUser | null;
 
   /**
    * Refers to a [[Post]]
    */
-  public postId: number;
+  public postId: number | null;
 
-  public postType: 'question' | 'answer';
+  public postType: 'question' | 'answer' | null;
 
   /**
    * *May be absent, in which case it is set to `null`*
    */
-  public replyToUser: ShallowUser;
+  public replyToUser: ShallowUser | null;
 
-  public score: number;
+  public score: number | null;
 
-  public upvoted: boolean;
+  public upvoted: boolean | null;
 
   public constructor (comment?: TypeComment) {
     this.body = comment?.body ?? null;
