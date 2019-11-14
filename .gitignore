@@ -87,8 +87,14 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-# VSCode Directory 
+# VSCode Directory
 .vscode/
+
+# Idea Directory
+.idea/
 
 # Distributed Files
 dist/
+
+# Docs Directory
+docs/

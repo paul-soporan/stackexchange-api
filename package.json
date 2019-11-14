@@ -12,8 +12,10 @@
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
     "prepare": "npm run build",
-    "build": "tsc",
-    "build:docs": "typedoc --out docs src/ --mode file --excludePrivate --excludeProtected --theme ./node_modules/typedoc-dark-theme/bin/default"
+    "build": "npm run build:fields && npm run lint && tsc",
+    "build:docs": "typedoc --out docs src/ --mode file --excludePrivate --excludeProtected --theme ./node_modules/typedoc-dark-theme/bin/default",
+    "build:fields": "node build/fields/compile.js && node build/fields/dist/build/fields/buildFields.js",
+    "lint": "eslint --fix src --ext .ts"
   },
   "keywords": [
     "stackexchange",
@@ -37,6 +39,7 @@
     "@typescript-eslint/eslint-plugin": "^2.4.0",
     "@typescript-eslint/parser": "^2.4.0",
     "eslint": "^6.5.1",
+    "ts-transformer-keys": "^0.3.5",
     "typedoc": "^0.15.0",
     "typedoc-dark-theme": "0.0.11",
     "typescript": "^3.7.2"
