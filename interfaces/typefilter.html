@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>RelatedSite | stackexchange-api</title>
+	<title>TypeFilter | stackexchange-api</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:200,200i,300,300i,400,400i,700" rel="stylesheet">
@@ -57,29 +57,21 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="relatedsite.html">RelatedSite</a>
+					<a href="typefilter.html">TypeFilter</a>
 				</li>
 			</ul>
-			<h1>Class RelatedSite</h1>
+			<h1>Interface TypeFilter</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>The equivalent of <a href="https://api.stackexchange.com/docs/types/related-site">Type related_site</a>.<br>
-						This object represents a <a href="site.html">Site</a> that is related in some way to another <a href="site.html">Site</a>.</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">RelatedSite</span>
+						<span class="target">TypeFilter</span>
 					</li>
 				</ul>
 			</section>
@@ -88,93 +80,45 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="relatedsite.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="relatedsite.html#apisiteparameter" class="tsd-kind-icon">api<wbr>Site<wbr>Parameter</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="relatedsite.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="relatedsite.html#relation" class="tsd-kind-icon">relation</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="relatedsite.html#siteurl" class="tsd-kind-icon">site<wbr>Url</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="typefilter.html#filter" class="tsd-kind-icon">filter</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="typefilter.html#filter_type" class="tsd-kind-icon">filter_<wbr>type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="typefilter.html#included_fields" class="tsd-kind-icon">included_<wbr>fields</a></li>
 							</ul>
 						</section>
 					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Related<wbr>Site<span class="tsd-signature-symbol">(</span>related_site<span class="tsd-signature-symbol">?: </span><a href="../interfaces/typerelatedsite.html" class="tsd-signature-type">TypeRelatedSite</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="relatedsite.html" class="tsd-signature-type">RelatedSite</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/ab5394e/src/classes/RelatedSite.ts#L18">classes/RelatedSite.ts:18</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> related_site: <a href="../interfaces/typerelatedsite.html" class="tsd-signature-type">TypeRelatedSite</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="relatedsite.html" class="tsd-signature-type">RelatedSite</a></h4>
-						</li>
-					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="apisiteparameter" class="tsd-anchor"></a>
-					<h3>api<wbr>Site<wbr>Parameter</h3>
-					<div class="tsd-signature tsd-kind-icon">api<wbr>Site<wbr>Parameter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="filter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> filter</h3>
+					<div class="tsd-signature tsd-kind-icon">filter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/ab5394e/src/classes/RelatedSite.ts#L12">classes/RelatedSite.ts:12</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p><em>May be absent, in which case it is set to <code>null</code></em></p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/ab5394e/src/classes/RelatedSite.ts#L14">classes/RelatedSite.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/ab5394e/src/interfaces/result-types/TypeFilter.ts#L4">interfaces/result-types/TypeFilter.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="relation" class="tsd-anchor"></a>
-					<h3>relation</h3>
-					<div class="tsd-signature tsd-kind-icon">relation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"parent"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"meta"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"chat"</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="filter_type" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> filter_<wbr>type</h3>
+					<div class="tsd-signature tsd-kind-icon">filter_<wbr>type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"safe"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"unsafe"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"invalid"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/ab5394e/src/classes/RelatedSite.ts#L16">classes/RelatedSite.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/ab5394e/src/interfaces/result-types/TypeFilter.ts#L5">interfaces/result-types/TypeFilter.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="siteurl" class="tsd-anchor"></a>
-					<h3>site<wbr>Url</h3>
-					<div class="tsd-signature tsd-kind-icon">site<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="included_fields" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> included_<wbr>fields</h3>
+					<div class="tsd-signature tsd-kind-icon">included_<wbr>fields<span class="tsd-signature-symbol">:</span> <a href="../globals.html#field" class="tsd-signature-type">Field</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/ab5394e/src/classes/RelatedSite.ts#L18">classes/RelatedSite.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/ab5394e/src/interfaces/result-types/TypeFilter.ts#L6">interfaces/result-types/TypeFilter.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -192,23 +136,17 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class">
-						<a href="relatedsite.html" class="tsd-kind-icon">Related<wbr>Site</a>
+					<li class="current tsd-kind-interface">
+						<a href="typefilter.html" class="tsd-kind-icon">Type<wbr>Filter</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="relatedsite.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="typefilter.html#filter" class="tsd-kind-icon">filter</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="relatedsite.html#apisiteparameter" class="tsd-kind-icon">api<wbr>Site<wbr>Parameter</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="typefilter.html#filter_type" class="tsd-kind-icon">filter_<wbr>type</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="relatedsite.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="relatedsite.html#relation" class="tsd-kind-icon">relation</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="relatedsite.html#siteurl" class="tsd-kind-icon">site<wbr>Url</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="typefilter.html#included_fields" class="tsd-kind-icon">included_<wbr>fields</a>
 							</li>
 						</ul>
 					</li>
