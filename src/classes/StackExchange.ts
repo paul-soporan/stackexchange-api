@@ -27,6 +27,7 @@ import {GetCommentsOnAnswersOptions} from '../interfaces/method-options/StackExc
 import {GetInfoOptions} from '../interfaces/method-options/StackExchange/GetInfoOptions';
 import {GetNamedOrTagBasedBadgesOptions} from '../interfaces/method-options/StackExchange/GetNamedOrTagBasedBadgesOptions';
 import {GetPostsOptions} from '../interfaces/method-options/StackExchange/GetPostsOptions';
+import {GetPostsByIdsOptions} from '../interfaces/method-options/StackExchange/GetPostsByIdsOptions';
 import {GetPrivilegesOptions} from '../interfaces/method-options/StackExchange/GetPrivilegesOptions';
 import {GetRecipientsBadgesOptions} from '../interfaces/method-options/StackExchange/GetRecipientsBadgesOptions';
 import {GetRecipientsBadgesByIdsOptions} from '../interfaces/method-options/StackExchange/GetRecipientsBadgesByIdsOptions';
@@ -824,6 +825,54 @@ export class StackExchange {
     return new Wrapper(
       await rp.get(
         getPostsUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
+      ), 'Post'
+    );
+  }
+
+
+  public static async getPostsByIds (
+    options: GetPostsByIdsOptions
+  ): Promise<Wrapper<Post>> {
+    const getPostsByIdsUrl = new URL(`/posts/${semiDelimitedListHandler(options.ids)}`, this.baseUrl);
+
+    if (options.filter) {
+      getPostsByIdsUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
+    if (options.fromDate) {
+      getPostsByIdsUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
+    }
+    if (options.max) {
+      getPostsByIdsUrl.searchParams.append('max', dateHandler(options.max));
+    }
+    if (options.min) {
+      getPostsByIdsUrl.searchParams.append('min', dateHandler(options.min));
+    }
+    if (options.order) {
+      getPostsByIdsUrl.searchParams.append('order', options.order);
+    }
+    if (options.page) {
+      getPostsByIdsUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getPostsByIdsUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    getPostsByIdsUrl.searchParams.append('site', options.site);
+    if (options.sort) {
+      getPostsByIdsUrl.searchParams.append('sort', options.sort);
+    }
+    if (options.toDate) {
+      getPostsByIdsUrl.searchParams.append('todate', dateHandler(options.toDate));
+    }
+
+    return new Wrapper(
+      await rp.get(
+        getPostsByIdsUrl.href, {
           headers: {
             'accept-encoding': 'gzip',
           },
