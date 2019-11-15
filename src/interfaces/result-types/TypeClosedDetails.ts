@@ -2,9 +2,9 @@ import {TypeOriginalQuestion} from './TypeOriginalQuestion';
 import {TypeShallowUser} from './TypeShallowUser';
 
 export interface TypeClosedDetails {
-  by_users?: TypeShallowUser[];
-  description?: string;
-  on_hold?: boolean;
-  original_questions?: TypeOriginalQuestion[];
-  reason?: string;
+  readonly by_users?: TypeShallowUser[];
+  readonly description?: string;
+  readonly on_hold?: boolean;
+  readonly original_questions?: TypeOriginalQuestion[];
+  readonly reason?: string;
 }

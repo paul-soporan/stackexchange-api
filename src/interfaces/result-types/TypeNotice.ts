@@ -1,5 +1,5 @@
 export interface TypeNotice {
-  body?: string;
-  creation_date?: Date;
-  owner_user_id?: number;
+  readonly body?: string;
+  readonly creation_date?: Date;
+  readonly owner_user_id?: number;
 }

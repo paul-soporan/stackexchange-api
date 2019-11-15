@@ -1,5 +1,5 @@
 export interface TypeStyling {
-  link_color?: string;
-  tag_background_color?: string;
-  tag_foreground_color?: string;
+  readonly link_color?: string;
+  readonly tag_background_color?: string;
+  readonly tag_foreground_color?: string;
 }

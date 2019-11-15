@@ -9,12 +9,12 @@ import {TypeSite} from './TypeSite';
 import {TypeTag} from './TypeTag';
 
 export interface TypeWrapper {
-  backoff?: number;
-  error_id?: number;
-  error_message?: string;
-  error_name?: string;
-  has_more?: boolean;
-  items?:
+  readonly backoff?: number;
+  readonly error_id?: number;
+  readonly error_message?: string;
+  readonly error_name?: string;
+  readonly has_more?: boolean;
+  readonly items?:
     | TypeAnswer[]
     | TypeBadge[]
     | TypeComment[]
@@ -24,10 +24,10 @@ export interface TypeWrapper {
     | TypeQuestion[]
     | TypeSite[]
     | TypeTag[];
-  page?: number;
-  page_size?: number;
-  quota_max?: number;
-  quota_remaining?: number;
-  total?: number;
-  type?: string;
+  readonly page?: number;
+  readonly page_size?: number;
+  readonly quota_max?: number;
+  readonly quota_remaining?: number;
+  readonly total?: number;
+  readonly type?: string;
 }

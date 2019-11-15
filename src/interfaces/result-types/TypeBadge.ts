@@ -1,12 +1,12 @@
 import {TypeShallowUser} from './TypeShallowUser';
 
 export interface TypeBadge {
-  award_count?: number;
-  badge_id?: number;
-  badge_type?: 'named' | 'tag_based';
-  description?: string;
-  link?: string;
-  name?: string;
-  rank?: 'gold' | 'silver' | 'bronze';
-  user?: TypeShallowUser;
+  readonly award_count?: number;
+  readonly badge_id?: number;
+  readonly badge_type?: 'named' | 'tag_based';
+  readonly description?: string;
+  readonly link?: string;
+  readonly name?: string;
+  readonly rank?: 'gold' | 'silver' | 'bronze';
+  readonly user?: TypeShallowUser;
 }

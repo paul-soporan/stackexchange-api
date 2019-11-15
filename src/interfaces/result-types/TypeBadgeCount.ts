@@ -1,5 +1,5 @@
 export interface TypeBadgeCount {
-  bronze?: number;
-  gold?: number;
-  silver?: number;
+  readonly bronze?: number;
+  readonly gold?: number;
+  readonly silver?: number;
 }

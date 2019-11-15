@@ -1,10 +1,10 @@
 export interface TypeTag {
-  count?: number;
-  has_synonyms?: boolean;
-  is_moderator_only?: boolean;
-  is_required?: boolean;
-  last_activity_date?: Date;
-  name?: string;
-  synonyms?: string[];
-  user_id?: number;
+  readonly count?: number;
+  readonly has_synonyms?: boolean;
+  readonly is_moderator_only?: boolean;
+  readonly is_required?: boolean;
+  readonly last_activity_date?: Date;
+  readonly name?: string;
+  readonly synonyms?: string[];
+  readonly user_id?: number;
 }

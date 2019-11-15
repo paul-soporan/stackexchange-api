@@ -1,7 +1,7 @@
 import {TypeSite} from './TypeSite';
 
 export interface TypeMigrationInfo {
-  on_date?: Date;
-  other_site?: TypeSite;
-  question_id?: number;
+  readonly on_date?: Date;
+  readonly other_site?: TypeSite;
+  readonly question_id?: number;
 }

@@ -1,6 +1,6 @@
 export interface TypeOriginalQuestion {
-  accepted_answer_id?: number;
-  answer_count?: number;
-  question_id?: number;
-  title?: string;
+  readonly accepted_answer_id?: number;
+  readonly answer_count?: number;
+  readonly question_id?: number;
+  readonly title?: string;
 }
