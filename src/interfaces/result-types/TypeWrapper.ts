@@ -1,12 +1,15 @@
-import {TypeAnswer} from './TypeAnswer';
-import {TypeBadge} from './TypeBadge';
-import {TypeComment} from './TypeComment';
-import {TypeFilter} from './TypeFilter';
-import {TypeInfo} from './TypeInfo';
-import {TypePrivilege} from './TypePrivilege';
-import {TypeQuestion} from './TypeQuestion';
-import {TypeSite} from './TypeSite';
-import {TypeTag} from './TypeTag';
+import {
+  TypeAnswer,
+  TypeBadge,
+  TypeComment,
+  TypeFilter,
+  TypeInfo,
+  TypePost,
+  TypePrivilege,
+  TypeQuestion,
+  TypeSite,
+  TypeTag,
+} from './ResultTypes';
 
 export interface TypeWrapper {
   readonly backoff?: number;
@@ -20,6 +23,7 @@ export interface TypeWrapper {
     | TypeComment[]
     | TypeFilter[]
     | TypeInfo[]
+    | TypePost[]
     | TypePrivilege[]
     | TypeQuestion[]
     | TypeSite[]

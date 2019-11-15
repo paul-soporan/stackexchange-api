@@ -1,16 +1,18 @@
 import * as rp from 'request-promise';
 
-import {Wrapper} from './Wrapper';
-
-import {Answer} from './Answer';
-import {Badge} from './Badge';
-import {Comment} from './Comment';
-import {Filter} from './Filter';
-import {Info} from './Info';
-import {Privilege} from './Privilege';
-import {Question} from './Question';
-import {Site} from './Site';
-import {Tag} from './Tag';
+import {
+  Answer,
+  Badge,
+  Comment,
+  Filter,
+  Info,
+  Post,
+  Privilege,
+  Question,
+  Site,
+  Tag,
+  Wrapper,
+} from '../index';
 
 import {AdvancedSearchOptions} from '../interfaces/method-options/StackExchange/AdvancedSearchOptions';
 import {CreateFilterOptions} from '../interfaces/method-options/StackExchange/CreateFilterOptions';
@@ -24,6 +26,7 @@ import {GetCommentsByIdsOptions} from '../interfaces/method-options/StackExchang
 import {GetCommentsOnAnswersOptions} from '../interfaces/method-options/StackExchange/GetCommentsOnAnswersOptions';
 import {GetInfoOptions} from '../interfaces/method-options/StackExchange/GetInfoOptions';
 import {GetNamedOrTagBasedBadgesOptions} from '../interfaces/method-options/StackExchange/GetNamedOrTagBasedBadgesOptions';
+import {GetPostsOptions} from '../interfaces/method-options/StackExchange/GetPostsOptions';
 import {GetPrivilegesOptions} from '../interfaces/method-options/StackExchange/GetPrivilegesOptions';
 import {GetRecipientsBadgesOptions} from '../interfaces/method-options/StackExchange/GetRecipientsBadgesOptions';
 import {GetRecipientsBadgesByIdsOptions} from '../interfaces/method-options/StackExchange/GetRecipientsBadgesByIdsOptions';
@@ -780,6 +783,54 @@ export class StackExchange {
           json: true,
         }
       ), 'Info'
+    );
+  }
+
+
+  public static async getPosts (
+    options: GetPostsOptions
+  ): Promise<Wrapper<Post>> {
+    const getPostsUrl = new URL('/posts', this.baseUrl);
+
+    if (options.filter) {
+      getPostsUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
+    if (options.fromDate) {
+      getPostsUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
+    }
+    if (options.max) {
+      getPostsUrl.searchParams.append('max', dateHandler(options.max));
+    }
+    if (options.min) {
+      getPostsUrl.searchParams.append('min', dateHandler(options.min));
+    }
+    if (options.order) {
+      getPostsUrl.searchParams.append('order', options.order);
+    }
+    if (options.page) {
+      getPostsUrl.searchParams.append('page', options.page.toString());
+    }
+    if (options.pageSize) {
+      getPostsUrl.searchParams.append('pagesize', options.pageSize.toString());
+    }
+    getPostsUrl.searchParams.append('site', options.site);
+    if (options.sort) {
+      getPostsUrl.searchParams.append('sort', options.sort);
+    }
+    if (options.toDate) {
+      getPostsUrl.searchParams.append('todate', dateHandler(options.toDate));
+    }
+
+    return new Wrapper(
+      await rp.get(
+        getPostsUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
+      ), 'Post'
     );
   }
 

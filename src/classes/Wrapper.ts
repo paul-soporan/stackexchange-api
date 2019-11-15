@@ -1,12 +1,15 @@
-import {Answer} from './Answer';
-import {Badge} from './Badge';
-import {Comment} from './Comment';
-import {Filter} from './Filter';
-import {Info} from './Info';
-import {Privilege} from './Privilege';
-import {Question} from './Question';
-import {Site} from './Site';
-import {Tag} from './Tag';
+import {
+  Answer,
+  Badge,
+  Comment,
+  Filter,
+  Info,
+  Post,
+  Privilege,
+  Question,
+  Site,
+  Tag,
+} from '../index';
 
 import {
   TypeAnswer,
@@ -14,6 +17,7 @@ import {
   TypeComment,
   TypeFilter,
   TypeInfo,
+  TypePost,
   TypePrivilege,
   TypeQuestion,
   TypeSite,
@@ -22,7 +26,7 @@ import {
 } from '../interfaces/result-types/ResultTypes';
 
 
-type ClassType = 'Answer' | 'Badge' | 'Comment' | 'Filter' | 'Info' | 'Privilege' | 'Question' | 'Site' | 'Tag';
+type ClassType = 'Answer' | 'Badge' | 'Comment' | 'Filter' | 'Info' | 'Post' | 'Privilege' | 'Question' | 'Site' | 'Tag';
 
 /**
  * The equivalent of the [Common Wrapper Object](https://api.stackexchange.com/docs/wrapper).<br>
@@ -35,6 +39,7 @@ export class Wrapper<
   | Comment
   | Filter
   | Info
+  | Post
   | Privilege
   | Question
   | Site
@@ -112,6 +117,11 @@ export class Wrapper<
           this.items
             = [...wrapper.items]
               .map((item) => new Info(item as TypeInfo)) as T[];
+          break;
+        case 'Post':
+          this.items
+            = [...wrapper.items]
+              .map((item) => new Post(item as TypePost)) as T[];
           break;
         case 'Privilege':
           this.items
