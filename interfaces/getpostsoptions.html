@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GetSitesOptions | stackexchange-api</title>
+	<title>GetPostsOptions | stackexchange-api</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:200,200i,300,300i,400,400i,700" rel="stylesheet">
@@ -57,10 +57,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="getsitesoptions.html">GetSitesOptions</a>
+					<a href="getpostsoptions.html">GetPostsOptions</a>
 				</li>
 			</ul>
-			<h1>Interface GetSitesOptions</h1>
+			<h1>Interface GetPostsOptions</h1>
 		</div>
 	</div>
 </header>
@@ -74,7 +74,7 @@
 						<a href="filterablerequest.html" class="tsd-signature-type">FilterableRequest</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">GetSitesOptions</span>
+								<span class="target">GetPostsOptions</span>
 							</li>
 						</ul>
 					</li>
@@ -87,9 +87,16 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="getsitesoptions.html#filter" class="tsd-kind-icon">filter</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getsitesoptions.html#page" class="tsd-kind-icon">page</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getsitesoptions.html#pagesize" class="tsd-kind-icon">page<wbr>Size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="getpostsoptions.html#filter" class="tsd-kind-icon">filter</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getpostsoptions.html#fromdate" class="tsd-kind-icon">from<wbr>Date</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getpostsoptions.html#max" class="tsd-kind-icon">max</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getpostsoptions.html#min" class="tsd-kind-icon">min</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getpostsoptions.html#order" class="tsd-kind-icon">order</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getpostsoptions.html#page" class="tsd-kind-icon">page</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getpostsoptions.html#pagesize" class="tsd-kind-icon">page<wbr>Size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getpostsoptions.html#site" class="tsd-kind-icon">site</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getpostsoptions.html#sort" class="tsd-kind-icon">sort</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="getpostsoptions.html#todate" class="tsd-kind-icon">to<wbr>Date</a></li>
 							</ul>
 						</section>
 					</div>
@@ -109,12 +116,52 @@
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="fromdate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> from<wbr>Date</h3>
+					<div class="tsd-signature tsd-kind-icon">from<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/9c163fd/src/interfaces/method-options/StackExchange/GetPostsOptions.ts#L4">interfaces/method-options/StackExchange/GetPostsOptions.ts:4</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="max" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> max</h3>
+					<div class="tsd-signature tsd-kind-icon">max<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/9c163fd/src/interfaces/method-options/StackExchange/GetPostsOptions.ts#L5">interfaces/method-options/StackExchange/GetPostsOptions.ts:5</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="min" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> min</h3>
+					<div class="tsd-signature tsd-kind-icon">min<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/9c163fd/src/interfaces/method-options/StackExchange/GetPostsOptions.ts#L6">interfaces/method-options/StackExchange/GetPostsOptions.ts:6</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="order" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> order</h3>
+					<div class="tsd-signature tsd-kind-icon">order<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"desc"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"asc"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/9c163fd/src/interfaces/method-options/StackExchange/GetPostsOptions.ts#L7">interfaces/method-options/StackExchange/GetPostsOptions.ts:7</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="page" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> page</h3>
 					<div class="tsd-signature tsd-kind-icon">page<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/9c163fd/src/interfaces/method-options/StackExchange/GetSitesOptions.ts#L4">interfaces/method-options/StackExchange/GetSitesOptions.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/9c163fd/src/interfaces/method-options/StackExchange/GetPostsOptions.ts#L8">interfaces/method-options/StackExchange/GetPostsOptions.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -124,7 +171,37 @@
 					<div class="tsd-signature tsd-kind-icon">page<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/9c163fd/src/interfaces/method-options/StackExchange/GetSitesOptions.ts#L5">interfaces/method-options/StackExchange/GetSitesOptions.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/9c163fd/src/interfaces/method-options/StackExchange/GetPostsOptions.ts#L9">interfaces/method-options/StackExchange/GetPostsOptions.ts:9</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="site" class="tsd-anchor"></a>
+					<h3>site</h3>
+					<div class="tsd-signature tsd-kind-icon">site<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/9c163fd/src/interfaces/method-options/StackExchange/GetPostsOptions.ts#L10">interfaces/method-options/StackExchange/GetPostsOptions.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="sort" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> sort</h3>
+					<div class="tsd-signature tsd-kind-icon">sort<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"activity"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"creation"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"votes"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/9c163fd/src/interfaces/method-options/StackExchange/GetPostsOptions.ts#L11">interfaces/method-options/StackExchange/GetPostsOptions.ts:11</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="todate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> to<wbr>Date</h3>
+					<div class="tsd-signature tsd-kind-icon">to<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/paul-soporan/stackexchange-api/blob/9c163fd/src/interfaces/method-options/StackExchange/GetPostsOptions.ts#L12">interfaces/method-options/StackExchange/GetPostsOptions.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -143,16 +220,37 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="getsitesoptions.html" class="tsd-kind-icon">Get<wbr>Sites<wbr>Options</a>
+						<a href="getpostsoptions.html" class="tsd-kind-icon">Get<wbr>Posts<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="getsitesoptions.html#filter" class="tsd-kind-icon">filter</a>
+								<a href="getpostsoptions.html#filter" class="tsd-kind-icon">filter</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="getsitesoptions.html#page" class="tsd-kind-icon">page</a>
+								<a href="getpostsoptions.html#fromdate" class="tsd-kind-icon">from<wbr>Date</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="getsitesoptions.html#pagesize" class="tsd-kind-icon">page<wbr>Size</a>
+								<a href="getpostsoptions.html#max" class="tsd-kind-icon">max</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="getpostsoptions.html#min" class="tsd-kind-icon">min</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="getpostsoptions.html#order" class="tsd-kind-icon">order</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="getpostsoptions.html#page" class="tsd-kind-icon">page</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="getpostsoptions.html#pagesize" class="tsd-kind-icon">page<wbr>Size</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="getpostsoptions.html#site" class="tsd-kind-icon">site</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="getpostsoptions.html#sort" class="tsd-kind-icon">sort</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="getpostsoptions.html#todate" class="tsd-kind-icon">to<wbr>Date</a>
 							</li>
 						</ul>
 					</li>
