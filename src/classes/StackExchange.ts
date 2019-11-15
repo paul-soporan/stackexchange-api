@@ -14,6 +14,7 @@ import {Tag} from './Tag';
 
 import {AdvancedSearchOptions} from '../interfaces/method-options/StackExchange/AdvancedSearchOptions';
 import {CreateFilterOptions} from '../interfaces/method-options/StackExchange/CreateFilterOptions';
+import {DecodeFiltersOptions} from '../interfaces/method-options/StackExchange/DecodeFiltersOptions';
 import {GetAnswersOptions} from '../interfaces/method-options/StackExchange/GetAnswersOptions';
 import {GetAnswersByIdsOptions} from '../interfaces/method-options/StackExchange/GetAnswersByIdsOptions';
 import {GetBadgesOptions} from '../interfaces/method-options/StackExchange/GetBadgesOptions';
@@ -178,6 +179,29 @@ export class StackExchange {
     return new Wrapper(
       await rp.post(
         createFilterUrl.href, {
+          headers: {
+            'accept-encoding': 'gzip',
+          },
+          gzip: true,
+          json: true,
+        }
+      ), 'Filter'
+    );
+  }
+
+
+  public static async decodeFilters (
+    options: DecodeFiltersOptions
+  ): Promise<Wrapper<Filter>> {
+    const decodeFiltersUrl = new URL(`/filters/${semiDelimitedListHandler(options.filters)}`, this.baseUrl);
+
+    if (options.filter) {
+      decodeFiltersUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
+
+    return new Wrapper(
+      await rp.get(
+        decodeFiltersUrl.href, {
           headers: {
             'accept-encoding': 'gzip',
           },
