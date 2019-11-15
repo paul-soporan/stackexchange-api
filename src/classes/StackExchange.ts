@@ -33,6 +33,7 @@ import {SimilarSearchOptions} from '../interfaces/method-options/StackExchange/S
 
 import {dateHandler} from '../handlers/dateHandler';
 import {fieldHandler} from '../handlers/fieldHandler';
+import {filterHandler} from '../handlers/filterHandler';
 import {semiDelimitedListHandler} from '../handlers/semiDelimitedListHandler';
 
 export class StackExchange {
@@ -69,6 +70,9 @@ export class StackExchange {
     }
     if (options.closed) {
       advancedSearchUrl.searchParams.append('closed', options.closed.toString());
+    }
+    if (options.filter) {
+      advancedSearchUrl.searchParams.append('filter', filterHandler(options.filter));
     }
     if (options.fromDate) {
       advancedSearchUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
@@ -155,14 +159,17 @@ export class StackExchange {
   ): Promise<Wrapper<Filter>> {
     const createFilterUrl = new URL(`/filters/create`, this.baseUrl);
 
-    if (options.include) {
-      createFilterUrl.searchParams.append('include', fieldHandler(options.include));
+    if (options.base) {
+      createFilterUrl.searchParams.append('base', options.base);
     }
     if (options.exclude) {
       createFilterUrl.searchParams.append('exclude', fieldHandler(options.exclude));
     }
-    if (options.base) {
-      createFilterUrl.searchParams.append('base', options.base);
+    if (options.filter) {
+      createFilterUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
+    if (options.include) {
+      createFilterUrl.searchParams.append('include', fieldHandler(options.include));
     }
     if (options.unsafe) {
       createFilterUrl.searchParams.append('unsafe', options.unsafe.toString());
@@ -197,6 +204,9 @@ export class StackExchange {
   ): Promise<Wrapper<Answer>> {
     const getAnswersUrl = new URL('/answers', this.baseUrl);
 
+    if (options.filter) {
+      getAnswersUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.fromDate) {
       getAnswersUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
     }
@@ -257,6 +267,9 @@ export class StackExchange {
   ): Promise<Wrapper<Answer>> {
     const getAnswersByIdsUrl = new URL(`/answers/${semiDelimitedListHandler(options.ids)}`, this.baseUrl);
 
+    if (options.filter) {
+      getAnswersByIdsUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.fromDate) {
       getAnswersByIdsUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
     }
@@ -325,6 +338,9 @@ export class StackExchange {
 
     const getBadgesUrl = new URL(getBadgesUrlPath, this.baseUrl);
 
+    if (options.filter) {
+      getBadgesUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.fromDate) {
       getBadgesUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
     }
@@ -380,6 +396,9 @@ export class StackExchange {
   ): Promise<Wrapper<Badge>> {
     const getBadgesByIdsUrl = new URL(`/badges/${semiDelimitedListHandler(options.ids)}`, this.baseUrl);
 
+    if (options.filter) {
+      getBadgesByIdsUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.fromDate) {
       getBadgesByIdsUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
     }
@@ -461,6 +480,9 @@ export class StackExchange {
   ): Promise<Wrapper<Badge>> {
     const getRecipientsBadgesUrl = new URL('/badges/recipients', this.baseUrl);
 
+    if (options.filter) {
+      getRecipientsBadgesUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.fromDate) {
       getRecipientsBadgesUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
     }
@@ -502,6 +524,9 @@ export class StackExchange {
   ): Promise<Wrapper<Badge>> {
     const getRecipientsBadgesByIdsUrl = new URL(`/badges/${semiDelimitedListHandler(options.ids)}/recipients`, this.baseUrl);
 
+    if (options.filter) {
+      getRecipientsBadgesByIdsUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.fromDate) {
       getRecipientsBadgesByIdsUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
     }
@@ -544,6 +569,9 @@ export class StackExchange {
   ): Promise<Wrapper<Comment>> {
     const getCommentsUrl = new URL('/comments', this.baseUrl);
 
+    if (options.filter) {
+      getCommentsUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.fromDate) {
       getCommentsUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
     }
@@ -600,6 +628,9 @@ export class StackExchange {
   ): Promise<Wrapper<Comment>> {
     const getCommentsByIdsUrl = new URL(`/comments/${semiDelimitedListHandler(options.ids)}`, this.baseUrl);
 
+    if (options.filter) {
+      getCommentsByIdsUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.fromDate) {
       getCommentsByIdsUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
     }
@@ -656,6 +687,9 @@ export class StackExchange {
   ): Promise<Wrapper<Comment>> {
     const getCommentsOnAnswersUrl = new URL(`/answers/${semiDelimitedListHandler(options.ids)}/comments`, this.baseUrl);
 
+    if (options.filter) {
+      getCommentsOnAnswersUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.fromDate) {
       getCommentsOnAnswersUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
     }
@@ -707,6 +741,9 @@ export class StackExchange {
   ): Promise<Wrapper<Info>> {
     const getInfoUrl = new URL('/info', this.baseUrl);
 
+    if (options.filter) {
+      getInfoUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     getInfoUrl.searchParams.append('site', options.site);
 
     return new Wrapper(
@@ -736,6 +773,9 @@ export class StackExchange {
   ): Promise<Wrapper<Privilege>> {
     const getPrivilegesUrl = new URL('/privileges', this.baseUrl);
 
+    if (options.filter) {
+      getPrivilegesUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.page) {
       getPrivilegesUrl.searchParams.append('page', options.page.toString());
     }
@@ -768,6 +808,9 @@ export class StackExchange {
   ): Promise<Wrapper<Site>> {
     const getSitesUrl = new URL('/sites', this.baseUrl);
 
+    if (options.filter) {
+      getSitesUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.page) {
       getSitesUrl.searchParams.append('page', options.page.toString());
     }
@@ -823,6 +866,9 @@ export class StackExchange {
 
     const getTagsUrl = new URL(getTagsUrlPath, this.baseUrl);
 
+    if (options.filter) {
+      getTagsUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.fromDate) {
       getTagsUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
     }
@@ -917,6 +963,9 @@ export class StackExchange {
   ): Promise<Wrapper<Question>> {
     const searchUrl: URL = new URL('/search', this.baseUrl);
 
+    if (options.filter) {
+      searchUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.fromDate) {
       searchUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
     }
@@ -998,6 +1047,9 @@ export class StackExchange {
   ): Promise<Wrapper<Question>> {
     const similarSearchUrl: URL = new URL('/similar', this.baseUrl);
 
+    if (options.filter) {
+      similarSearchUrl.searchParams.append('filter', filterHandler(options.filter));
+    }
     if (options.fromDate) {
       similarSearchUrl.searchParams.append('fromdate', dateHandler(options.fromDate));
     }

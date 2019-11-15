@@ -1,4 +1,6 @@
-export interface AdvancedSearchOptions {
+import {FilterableRequest} from '../FilterableRequest';
+
+export interface AdvancedSearchOptions extends FilterableRequest {
   accepted?: boolean;
   answers?: number;
   body?: string;

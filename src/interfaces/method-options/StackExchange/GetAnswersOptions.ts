@@ -1,4 +1,6 @@
-export interface GetAnswersOptions {
+import {FilterableRequest} from '../FilterableRequest';
+
+export interface GetAnswersOptions extends FilterableRequest {
   fromDate?: Date;
   max?: Date;
   min?: Date;

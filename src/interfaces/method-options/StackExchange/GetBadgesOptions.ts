@@ -1,4 +1,6 @@
-export interface GetBadgesOptions {
+import {FilterableRequest} from '../FilterableRequest';
+
+export interface GetBadgesOptions extends FilterableRequest {
   fromDate?: Date;
   inName?: string;
   max?: 'gold' | 'silver' | 'bronze';

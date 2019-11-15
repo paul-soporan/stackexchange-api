@@ -1,4 +1,6 @@
-export interface GetTagsOptions {
+import {FilterableRequest} from '../FilterableRequest';
+
+export interface GetTagsOptions extends FilterableRequest {
   fromDate?: Date;
   inName?: string;
   max?: number;

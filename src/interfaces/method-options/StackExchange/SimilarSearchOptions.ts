@@ -1,4 +1,6 @@
-export interface SimilarSearchOptions {
+import {FilterableRequest} from '../FilterableRequest';
+
+export interface SimilarSearchOptions extends FilterableRequest {
   fromDate?: Date;
   max?: Date;
   min?: Date;

@@ -1,4 +1,6 @@
-export interface GetCommentsOptions {
+import {FilterableRequest} from '../FilterableRequest';
+
+export interface GetCommentsOptions extends FilterableRequest {
   fromDate?: Date;
   max?: Date;
   min?: Date;
